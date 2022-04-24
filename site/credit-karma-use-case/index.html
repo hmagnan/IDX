@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/credit-karma-use-case/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Web App - Credit Karma Use Case - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Web App - Credit Karma Use Case";
+        var mkdocs_page_input_path = "credit-karma-use-case.md";
+        var mkdocs_page_url = "/credit-karma-use-case/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Web App - Credit Karma Use Case</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Web App - Credit Karma Use Case</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="web-app-integration-credit-karma">Web App Integration - Credit Karma</h2>
+<h2 id="credit-karma-use-case">Credit Karma Use Case</h2>
+<p>Credit Karma (CK) is a debt management widget integrating customer financial information with IDX to allow customers to analyze their debt and payment strategies. Before third party offerings can integrate with the Databridge, you need the correct access and refresh tokens. The following steps illustrate how to acquire the appropriate access and how Credit Karma integrates with IDX. </p>
+<h3 id="get-a-client-id-and-client-secret">Get a Client Id and Client Secret</h3>
+<ol>
+<li>
+<p>Onboard the app.</p>
+<p>The Intuit team will onboard the app and share the API key (appToken).</p>
+</li>
+<li>
+<p>Configure the SAML provider at Intuit.</p>
+<p>Intuit Identity configures the SAML provider Id and the certificate to facilitate the integration. For this, Intuit Identity requires:
+- Identity provider ID
+- Certificate</p>
+</li>
+<li>
+<p>Activate the Client.
+   Activate the client by calling the Intuit OAuth2 endpoint using the API Key (the appToken shared by the Intuit Identity team). Store the Client Id and Client Secret returned during activation. This is a one-time activity.</p>
+</li>
+</ol>
+<pre><code class="language-java">curl --location --request POST 'https://oauth2-aws-e2e.api.intuit.com/oauth2/v1/clients' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'x_app_token=lBqHE3pvB3yZsBEvR2BJTRXbW6nz3xZt8R7JsUzfXL2J3UZk8K' \
+--data-urlencode 'x_client_context=test'
+</code></pre>
+<p>Note: The sample SAML assertion is generated using the Open SAML java library with the test provider "halo-saml-login" and certificate, by passing the test user-id "EXISTING_USER1".</p>
+<h3 id="get-the-access-and-refresh-token">Get the Access and Refresh Token</h3>
+<ol>
+<li>Generate an access token and refresh token:
+Call the Intuit OAuth2 endpoint to get an Access Token and Refresh Token by passing the generated SAML assertion along with base 64 encoded Client Id and Client Secret in the header. This is a runtime flow.
+Note the Intuit headers:<ul>
+<li>--header 'intuit_test: true'</li>
+<li>--header 'intuit_tid: 563102134754334546'</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-java">curl --location --request POST 'https://oauth2-aws-e2e.api.intuit.com/oauth2/v1/tokens/bearer' \
+--header 'Authorization: Basic QUJCT2M1djdiTnZRWjFGTUxQMXFPR3Z5UnZlWGJ0NmY1dmxDQkxLUDFTYWJCQ1ppcWk6UTk0VEZVUmQzTVE4SUJOcWttV1ZGdlZNeERBT3UzM3NHUEY0SzhzMw==' \
+--header 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
+--header 'intuit_test: true' \
+--header 'intuit_tid: 563102134754334546' \
+--header 'Content-Type: text/plain' \
+--data-raw 'assertion=PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c2FtbDI6QXNzZXJ0aW9uIHhtbG5zOnNhbWwyPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoyLjA6YXNzZXJ0aW9uIiBJRD0iXzliNjA0ZWM5YTQyYmQyNjNmNzY2M2Y3NDk5ZTQxYzYyIiBJc3N1ZUluc3RhbnQ9IjIwMjAtMDgtMTNUMTU6NTI6MTEuNzQ1WiIgVmVyc2lvbj0iMi4wIj48c2FtbDI6SXNzdWVyLz48ZHM6U2lnbmF0dXJlIHhtbG5zOmRzPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjIj48ZHM6U2lnbmVkSW5mbz48ZHM6Q2Fub25pY2FsaXphdGlvbk1ldGhvZCBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyIvPjxkczpTaWduYXR1cmVNZXRob2QgQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjcnNhLXNoYTEiLz48ZHM6UmVmZXJlbmNlIFVSST0iI185YjYwNGVjOWE0MmJkMjYzZjc2NjNmNzQ5OWU0MWM2MiI-PGRzOlRyYW5zZm9ybXM-PGRzOlRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvMDkveG1sZHNpZyNlbnZlbG9wZWQtc2lnbmF0dXJlIi8-PGRzOlRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyIvPjwvZHM6VHJhbnNmb3Jtcz48ZHM6RGlnZXN0TWV0aG9kIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI3NoYTEiLz48ZHM6RGlnZXN0VmFsdWU-V3NJNkhRZ0cxQ3lhQ1FMVmR2UEpPdXZSTzdnPTwvZHM6RGlnZXN0VmFsdWU-PC9kczpSZWZlcmVuY2U-PC9kczpTaWduZWRJbmZvPjxkczpTaWduYXR1cmVWYWx1ZT5LM3VTb2FUL0pIdG5EcUZtRGVQMTlwcmtzZllJd2NqL0ZDS01xOEN5WC9LdkRLMUtyQmYya2YwU1ZoZE5sS3k4RGRoeDNxbTQwb0RXWDNUWVJQWjVQaHd2ay9vS1dlZ0Vna04rcXpJZEI2ZzZGOXhveTZZRk5xajMzRWF6bGdZdm16MW83TXhQakc4d0d5MG1KemZucDlmWlB6dTc1bTJCbTZxS2hZTXdNTnNCYmhPczg1T0F3OEtYcWxQN3VEaXBPVStNZ2lkc2MxWXl0TTY4aXNjL3BrRkxlVzVvL0dXSGRDbExqNmIxWEJ1RXRCMGphd2N2UnFJRmhyOUMyNks5UDViVGYyS0xLdGpWbGZXbWRSazZESEtMeUV2Z2ZSMURycHFETjZ2QU9FaC9JYThqcmxZNmptTTRpRFpoaXEzMmhFUGlVMnordmZTU3llRS9mS1U0a1E9PTwvZHM6U2lnbmF0dXJlVmFsdWU-PC9kczpTaWduYXR1cmU-PHNhbWwyOlN1YmplY3Q-PHNhbWwyOk5hbWVJRCBGb3JtYXQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjEuMTpuYW1laWQtZm9ybWF0OnVuc3BlY2lmaWVkIi8-PHNhbWwyOlN1YmplY3RDb25maXJtYXRpb24gTWV0aG9kPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoyLjA6Y206YmVhcmVyIi8-PC9zYW1sMjpTdWJqZWN0PjxzYW1sMjpDb25kaXRpb25zIE5vdEJlZm9yZT0iMjAyMC0wOC0xM1QxNTo0NzoxMS43NDVaIiBOb3RPbk9yQWZ0ZXI9IjIwMjAtMDgtMTNUMTY6MDI6MTEuNzQ1WiI-PHNhbWwyOkF1ZGllbmNlUmVzdHJpY3Rpb24-PHNhbWwyOkF1ZGllbmNlLz48L3NhbWwyOkF1ZGllbmNlUmVzdHJpY3Rpb24-PC9zYW1sMjpDb25kaXRpb25zPjxzYW1sMjpBdXRoblN0YXRlbWVudCBBdXRobkluc3RhbnQ9IjIwMjAtMDgtMTNUMTU6NTI6MTEuNjIyWiIgU2Vzc2lvbkluZGV4PSJfOWI2MDRlYzlhNDJiZDI2M2Y3NjYzZjc0OTllNDFjNjIiPjxzYW1sMjpBdXRobkNvbnRleHQ-PHNhbWwyOkF1dGhuQ29udGV4dENsYXNzUmVmPnVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphYzpjbGFzc2VzOnVuc3BlY2lmaWVkPC9zYW1sMjpBdXRobkNvbnRleHRDbGFzc1JlZj48L3NhbWwyOkF1dGhuQ29udGV4dD48L3NhbWwyOkF1dGhuU3RhdGVtZW50Pjwvc2FtbDI6QXNzZXJ0aW9uPg&amp;grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer'
+</code></pre>
+<h4 id="response"><strong>Response</strong></h4>
+<p>The sample response containing the access and refresh tokens looks like this:</p>
+<pre><code class="language-java">{
+&quot;access_token&quot;: &quot;eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..f99i22bEJqgnQWWizOcpAw.lhtwGwQjQ2H8snnvlD9fBZ-uzgIZjfEPkys0p2IYgjzWsp-fsRxtx-XJqyt4z3iqeJEF_YJtpMcKnLHDDc97g2087uMjNyqYXZjok4EBYt24frezFVXLRwWbUYQPSvw0ZDvT-FXOh6m6z_VCtAvYbP_60fRSaFegEPV9hUPvneJUKer7CdNoRtbhOz55JokgEnaMqWmqJjnJ3YhBKb6dj-buNhdLs7X_ihSdH4DIhE3VlGpxQ30AIFI-W7pSmhhXAjL_UOMnfRuo8h8HW6kuU8bdT28BKdhQgEyodAraQ87MpgvTznjoj16S6lPxMXMZZCxiuwMLljYDBVs3UrS6MyawO6jDFlgDncG9QqDwEa28fM1tiZX00lNgecGNLdVCtB-RN5Ivhyc2HDRudZId22mVvCvprk7Jeg0bNsUxvP3SE8xZhBFS1s4Or60ICvQnuWR9LcvXVldvH0-Cf8HGxLTMyx1iNf67kus811-FXFpAvTIxgVQ8aLFxqmbhO9voBBVjEjbbo5oMU5Dd9cxuZ8eyziGZ81NVnuQ__KcLJurD5JAolgsjhRO98Dhn4xXINF7R_FqExPBlETs7VNfA6SYJLIbW9ULuYBvOlUIZxi3gk2ppH3gRNr3oTx0muGFa.3ytXsmJsdNjdGV82hWOTMQ&quot;,
+&quot;refresh_token&quot;: &quot;AB11613983543Tq2cvCGngu7sa8DksGnawqND4Di1hN2jfoe8x&quot;,
+&quot;token_type&quot;: &quot;bearer&quot;,
+&quot;expires_in&quot;: 3600
+}
+</code></pre>
+<p>In the request, "client id" and "client secret" should be passed as a base64 encoded string in the Authorization header. For example:
+base64.encode('client_id':'client_secret')_
+The body should contain Base64 encoded SAML assertion concatenated with</p>
+<pre><code class="language-yaml">&amp;grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer'
+</code></pre>
+<ol>
+<li>Cache the Tokens
+The backend stores these tokens against the user identifier and looks up these tokens locally.<ul>
+<li>Access tokens have a short duration ( ~ 1 hour) and are used to access the FDP resource.</li>
+<li>Refresh tokens have a longer duration (typically 100 days rolling period).</li>
+</ul>
+</li>
+<li>Refresh/Renew Access Token
+When the Access Token expires, call the Intuit Refresh Token OAuth2 endpoint to get a newAccess Tokenby passing theRefresh Token.</li>
+</ol>
+<h4 id="request"><strong>Request</strong></h4>
+<pre><code class="language-java">curl --location --request POST 'https://oauth-e2e.platform.intuit.com/oauth2/v1/tokens/bearer' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Authorization: Basic QUJCT2M1djdiTnZRWjFGTUxQMXFPR3Z5UnZlWGJ0NmY1dmxDQkxLUDFTYWJCQ1ppcWk6UTk0VEZVUmQzTVE4SUJOcWttV1ZGdlZNeERBT3UzM3NHUEY0SzhzMw==' \
+--data-urlencode 'grant_type=refresh_token' \
+--data-urlencode 'refresh_token=AB11620192306baOCUE1QFhaGVqNWFcTLicL0bPYKnHAtrF8Mr'
+</code></pre>
+<h4 id="reponse"><strong>Reponse</strong></h4>
+<pre><code class="language-json">Status: 200
+Connection: keep-alive
+Keep-Alive: timeout=5
+Strict-Transport-Security: max-age=15552000
+Cache-Control: no-cache, no-store
+Content-Type: application/json;charset=utf-8
+Server: nginx
+{
+&quot;refreshToken&quot;: &quot;AB11620196643a1VaPAzO4XWVctGh4iLL2Bsuxd63yl7LLJbMC&quot;,
+&quot;accessToken&quot;: &quot;eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..cQ_jKP-txwQtGR_viNkHzw
+.fcSlMk5x1aa68KNNVZnqdtFONiwLrktgIecMS0KKnU7MMiesGW6HxA05phsgu-0yQqid-UOlzMczwij6RT0jxxonua
+-lbg1VxQRxkyrf6l1XHZ7pk2rtp3STRxVeZS7KioXHpy12gzxyvNYlbNDCL23Ae2eD67sWT31REmOMCLgkU3v9tq1DCEpgldMnJpA5j3X8
+B2dV5qlnHgfjH0y4fWCU7toRHSMmj5ni3lJWj-E6qYmCqSl84JnawQddVlq-hRTfhY6FdocyhrnzO2WjDEy91O-1s10PsdL-H
+-or9R_ygmQzBRYsNtiG4n1t5
+-mkQFqnuI6W6hPFY1k529QPu0uLhWy3Q5pQH6ZgmFuPK2vQaXpToCk1ZDO0OE4NGiuNns0AiQcM8Y5QeH5nOVk8YgFQVr4E9
+-AOTRRuQjmlmGfkxIWGnGufzLTMTpnmbn9tSdc
+-ZZod4QSY6PG4cS9fqcmY8DcGHCnCTLHKG86hGixrar43MFFIWreEd78_uC33gNHYxrCRfDenxId7Wk4o-0a5lm4oEqvvmeW2pcTJ
+-Ve8kz_xxMjziFYsqbWfdvvRJOKK4L5GglGpBQ6ZdqVJ6YDB_sxGSRmqaldumyo3CCkl92iz6ibXl74oJ0oXPx_CYonT-Xu6w5TW
+-NWKPbqfi3ZcZwM-mEeXE3sn93_UhOW7Ax0O3yZott747UVM8GxtcvlWGsZvDOzZdvjb86fPgCWJq8vsz1w_UBHSioJuChu17rSyeE4xxu
+9aQHyb3wviY7iSMa_QZe2c3gLNNXddn1Zkf4ND8nFUQyBy2bZQn7HV3sSm9_Jin7S31Xne06s9DEO-B2zcha1FeBoSvQxSHQ
+.2Z249nooOLT5aMC72jCMAQ&quot;,
+&quot;expires_in&quot;: 3600,
+&quot;x_refresh_token_expires_in&quot;: 15551989
+</code></pre>
+<ol>
+<li>When refresh tokens expire
+Refresh Tokens have a lifetime of 6 months and 100 days of a rolling period.
+Refresh Tokens expire in the following conditions:<ul>
+<li>If there are no calls to Intuit within the rolling time period (100 days).</li>
+<li>When the Refresh Token lifetime expires (after 6 months).
+When a refresh token expires, the flow should start over.
+A new refresh token is issued every 24 hours. That is, if a renew access token call comes within a 24-hour period, it is the same refresh token. If the renew access token call is made after the 24-hour period of the last issued refresh token, a new refresh token is issued within the current rolling time.
+Make sure the app is always using the latest refresh token by overwriting the old refresh token. This is to prevent attempts to reuse the same Refresh Token in parallel in different applications.</li>
+</ul>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ios-integration-manage-connections/" class="btn btn-neutral float-left" title="iOS Integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../useCases/" class="btn btn-neutral float-right" title="Use Cases">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ios-integration-manage-connections/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../useCases/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

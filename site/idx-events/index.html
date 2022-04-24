@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/idx-events/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>IDX Events - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "IDX Events";
+        var mkdocs_page_input_path = "idx-events.md";
+        var mkdocs_page_url = "/idx-events/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">IDX Events</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#idx-event-headers">IDX Event Headers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#provider-error-messages">Provider Error Messages</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#idx-error-messages">IDX Error Messages</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#internal-error-codes">Internal Error Codes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fdp-error-codes">FDP Error Codes</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>IDX Events</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="idx-events">IDX Events</h1>
+<p>IDX Events as described in the Swagger file.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Event</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td>String</td>
+<td>Calls the following to return account information:<p> - providerDetail - name<p>- accountDisplayInfo - nickname, displayName, accountNumberDisplay <p>- accountRefreshInfo - lastSuccessfulRefreshTime, lastRefreshAttemptTime<p>- loanInfo calls: - LoanAccountInfo, balances, - originalPrincipal, originatingDate, loanTerm, totalNumberOfPayments, paymentFrequency, balloonAmount, interestRate, principlatePaidYearToDate, - interestPaidYearToDate <br> - LineofCreditAccountInfo</td>
+</tr>
+<tr>
+<td>Connection Status</td>
+<td>String</td>
+<td>An enum value indicating connection status. One of INVALID_CREDENTIALS, CREDENTIAL_UPDATE, MFA_CHALLENGE, USER_PROVIDER_ACTION, OK <p><p> INVALID_CREDENTIALS - Incorrect username or password or OAuth token expired <p><p>CREDENTIAL_UPDATE - User needs to migrate credential to a different authentication method<br><br>MFA_CHALLENGE - Connection requires multi-factor authentication questions to be answered<br><br> USER_PROVIDER_ACTION - User’s action is needed at the provider end<br><br>OK - Connection is good</td>
+</tr>
+<tr>
+<td>LoanAccountInfo</td>
+<td>String</td>
+<td>Calls the following and provides the details about a loan account. <br> - Money - currency, amount<p>- InterestRate - percentage, type, method</td>
+</tr>
+<tr>
+<td>LineOfCreditAccountInfo</td>
+<td>String</td>
+<td>Calls the following and provides details about a line of credit account.<br> - InterestRate<p> - LineOfCreditBalances</td>
+</tr>
+<tr>
+<td>Bill</td>
+<td>String</td>
+<td>Represents a payment due to a Biller which needs to be paid by a user along with associated Bill Pay information. A bill is associated with certain types of Accounts, LineOfCreditAccount, LoanAccount. In the future support for non FI billers may also be added. Calls:<br>- Money - currency, amount<br>- LoanBillInfo - lastPaymentAmount, lastPayments, pastDueAmount<br>- LineofCreditBillInfo - minimumPaymentAmount, lastPaymentAmount, lastPaymentDate, pastDueAmount, interestCharges</td>
+</tr>
+<tr>
+<td>LoanBillInfo</td>
+<td>String</td>
+<td>Provides lastPaymentAmount, lastPaymentDate, and pastDueAmount. Calls:<br>- Money - currency and amount</td>
+</tr>
+<tr>
+<td>LineOfCreditBillInfo</td>
+<td>String</td>
+<td>Provides info about the line of credit. If money is owed to the financial institution, the amount displayed is negative, and positive if the financial institution owes money to the user. Calls:<br>- Money - currency, amount</td>
+</tr>
+<tr>
+<td>ProfileStatus</td>
+<td>String</td>
+<td>Indicates whether to show a notification to a customer or not. If an event with this entity is published with hasNotification true, then the offering should use the status widget to show the notification to the customer. Calls:<br>- ConnectionStatus - id, idType, label, status, severity, userActionRequired, statusDescription</td>
+</tr>
+<tr>
+<td>ConnectionStatus</td>
+<td>String</td>
+<td>Represents the status or issue of an account or connection level.</td>
+</tr>
+<tr>
+<td>Liabilities</td>
+<td>String</td>
+<td>Represents the list of user liabilities. (Future)</td>
+</tr>
+<tr>
+<td>ProviderDetails</td>
+<td>String</td>
+<td>Provides information regarding the provider, including name and log.</td>
+</tr>
+<tr>
+<td>Logo</td>
+<td>String</td>
+<td>Provides the information needed to display a provider logo.</td>
+</tr>
+<tr>
+<td>AccountRefreshInfo</td>
+<td>String</td>
+<td>Provides information related to the data freshness for the account, last time the data was refreshed and the last time a refresh was attempted.</td>
+</tr>
+<tr>
+<td>AccountDisplayInfo</td>
+<td>String</td>
+<td>Provides the attributes needed for users to recognize their account.</td>
+</tr>
+<tr>
+<td>LineOfCreditBalances</td>
+<td>String</td>
+<td>Displays the balances associated with a line of credit account. Calls:<br>-Money - currency, amount</td>
+</tr>
+<tr>
+<td>LoanBalances</td>
+<td>String</td>
+<td>Provides the balance associated with the loan.</td>
+</tr>
+<tr>
+<td>InterestCharge</td>
+<td>String</td>
+<td>Provides the interest charge for the account. Calls:<br> - Money - currency, amount</td>
+</tr>
+<tr>
+<td>InterestRate</td>
+<td>String</td>
+<td>Provides the interest rate for an account.</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>String</td>
+<td>ISO 8601 date in YYY-MM-DD format.</td>
+</tr>
+<tr>
+<td>Money</td>
+<td>String</td>
+<td>Returns currency and amount</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>String</td>
+<td>ISO 8601 date time in milliseconds in UTC zone</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>String</td>
+<td>The object containing the details of a failure</td>
+</tr>
+<tr>
+<td>CallBackResponse</td>
+<td>String</td>
+<td>Used to track async responses from IDX. Calls:<br> ProviderDetail - name, logos</td>
+</tr>
+<tr>
+<td>AccountTypes</td>
+<td>String</td>
+<td>One of:<br>- Deposit<br>- Investment<br> - Loan<br> - Line of Credit<br> - Insurance</td>
+</tr>
+<tr>
+<td>AccountSubtype</td>
+<td>String</td>
+<td>One of:<br>- 401A, 401K, 403B, 529<br>- Auto Loan<br>- CD<br>- Charge<br>- Checking<br>- Commercial Line Of Credit<br>- Commercial Loan<br>- Coverdell<br>- Credit Card<br>- Escrow<br>- Esop<br>- Guardian<br>- Home Equity Loan<br>- Homeline Credit<br>- Institutional Trust<br>- Installment<br>- IRA<br>- Keogh<br>- Line Of Credit<br>- Loan<br>- Military Loan<br>- Money Market<br>- Mortgage<br>- Personalloan<br>- Rollover<br>- Roth<br>- Sarsep<br>- Savings<br>- SMB Loan<br>- Studentloan<br>- Taxable<br>- Tda<br>- Trust<br>- Ugma<br>- Utma<br>- Annuity</td>
+</tr>
+<tr>
+<td>CallbackAccount</td>
+<td>String</td>
+<td>Account entity that is returned to the callback response. Calls:<br>- AccountDisplayInfo - nickname, displayName, accountNumberDisplay</td>
+</tr>
+<tr>
+<td>AccountEvent</td>
+<td>String</td>
+<td>Calls:<br>- Account - id, type, subtype, status, providerDetail, AccountDisplayInfo, AccountRefreshInfo, LoanAccountInfo, lineOfCreditAccountInfo</td>
+</tr>
+<tr>
+<td>BillEvent</td>
+<td>String</td>
+<td>Presents a payment due to a biller to be paid by the user in addition with the associated bill pay info. A bill is associated with a certain type of account, either  LineOfCreditAccount or LoanAccount. Calls:<br>- Bill - id, accountID, statementBalance,  statementDate, paymentDueDate, autoPayEnabled, lateFee, loanInfo, lineOfCreditInfo</td>
+</tr>
+<tr>
+<td>ProfileStatusEvent</td>
+<td>String</td>
+<td>Calls ProfileStatus and ConnectionStatus.</td>
+</tr>
+<tr>
+<td>EventMeta</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EventHeaders</td>
+<td>String</td>
+<td>Attributes for the Kafka Event headers and part of Meta for internal analytics. 3rd parties consuming this data may read externalUserId.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="idx-event-headers">IDX Event Headers</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute Name</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Possible values</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intuitTid</td>
+<td>Required</td>
+<td>Unique ID of the interaction initiating the message</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>entityType</td>
+<td>Required</td>
+<td>One of Account, Bill or ProfileStatus</td>
+</tr>
+<tr>
+<td>entityOperation</td>
+<td>Required</td>
+<td>-create (creates an entity0<br>- update (updates an entity)<br>- delete (deletes an entity)<br>- status_change (when a ProfileStatus event is published)</td>
+</tr>
+<tr>
+<td>version</td>
+<td>Required</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>contentType</td>
+<td>Required</td>
+<td>application/json, ...</td>
+</tr>
+<tr>
+<td>intuitFdpCorrelationId</td>
+<td>Optional</td>
+<td>uuid A uuid tied to an Add Connection event if the event originated from widgets</td>
+</tr>
+<tr>
+<td>intuitAppId</td>
+<td>Required</td>
+<td>Application id of the app/service publishing the event</td>
+</tr>
+<tr>
+<td>intuitUserId</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>intuiRealmId</td>
+<td>Required</td>
+<td>Intuit Realm Id - represents the Company Id on whose behalf request is initiated.</td>
+</tr>
+<tr>
+<td>intuitFlowId</td>
+<td>Optional</td>
+<td>Guid - Id of the invocation of the widget's flow that led to this event being published. Only applicable for widget's initiated events.</td>
+</tr>
+<tr>
+<td>intuitFdpProfileType</td>
+<td>Required</td>
+<td>One of USER or REALM. If the request was initiated on behalf of a User, then value is USER. If the request was initiated by a company, it will be REALM.</td>
+</tr>
+<tr>
+<td>intuitFdpFlowname</td>
+<td>Required</td>
+<td>intuitDataClassification: PUBLIC<br>- Name of the widgets flow that initiated the request used for logging and debugging purposes.</td>
+</tr>
+<tr>
+<td>intuitEventId</td>
+<td>Required</td>
+<td>Unique ID per generated event.</td>
+</tr>
+<tr>
+<td>intuitCompressionType</td>
+<td>Optional</td>
+<td>The compression algorithm used for compressing payload if compressed. Possible value is gzip.</td>
+</tr>
+<tr>
+<td>externalUserId</td>
+<td>Optional</td>
+<td>The ID of the user in an external or 3rd party app. For example, Credit Karma.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-handling">Error Handling</h2>
+<p>Error handling is done at multiple points.</p>
+<ul>
+<li>3rd Party Offering (widget or web app)</li>
+<li>IDX</li>
+<li>Provider</li>
+</ul>
+<p>Errors can be generalized into a few categories:</p>
+<ul>
+<li>Authentication</li>
+<li>Connections</li>
+<li>User</li>
+</ul>
+<p>Authentication errors are generally caused by bad credentials, or abnormal behavior at the financial institution’s website. For example, during a login a financial institution may present offer popups or new Terms and Agreements windows that cannot be dismissed by IDX.
+In other cases, the financial institution might present a security captcha, or request two-factor authentication as IDX looks like a new login.
+Connection errors are usually going to originate at the financial institution website. The site might be down, undergoing maintenance, or the connection might be intermittent.
+User errors typically occur at the account level. They might be trying to access an account that doesn’t exist, or they are trying to access their account at the wrong institution, or they have the account open on a different device.</p>
+<h4 id="provider-error-messages">Provider Error Messages</h4>
+<p>The following error messages refer to provider behavior, that is, error messages generated by the institution IDX is logged into on behalf of a user.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Provider Behaviour</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Additional Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provider Down</td>
+<td>The provider website is not responding, or is responding intermittently.</td>
+<td>Error Codes - 102, 105</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Provider maintenance windows</td>
+<td>The provider website is undergoing maintenance and is not available for transactions.</td>
+<td>Error Codes - 105</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Providers requires MFA for refresh connection</td>
+<td>The financial institution requires multi-factor at the institution’s site.</td>
+<td>Error Codes - 185, 187</td>
+</tr>
+<tr>
+<td>Providers throttling limits</td>
+<td>It means that the provider is throttling IDX because we made more requests than was allowed.</td>
+<td>Error Codes - 400, 401</td>
+</tr>
+<tr>
+<td>OAuth Migration</td>
+<td>Provider is being moved from Screen Scraping to OAuth migration</td>
+<td>Error Codes - 350, 351</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>User action required on the bank site</td>
+<td>This error is typically associated with popup offers at the institution’s site. IDX cannot dismiss them.</td>
+<td>Error Codes - 108, 109</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Provider blocking Intuit</td>
+<td>The provider is not allowing IDX connections.</td>
+<td>Error code - 155</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Customer locked out of Provider</td>
+<td>This generally occurs when the user has exceeded the number of login attempts.</td>
+<td>Error code - 570</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="idx-error-messages">IDX Error Messages</h3>
+<p>The following are the most common error messages. The first table are the internal error codes, the second table the matching error codes with the error messages displayed to the user.</p>
+<h4 id="internal-error-codes">Internal Error Codes</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Error Codes</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>A general error that occurs when an end user tries to add an account. Generally, there is no valid account on the online banking website that satisfies at least one of the following criteria:<br>- Non-zero balance amount<br>- At least 12 months of transaction.<br>One other possibility is a prompt on the online banking site requiring the user to accept the “Terms and Conditions”.</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Login error</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Website is unavailable or intermittently available</td>
+</tr>
+<tr>
+<td>106</td>
+<td>Account not found</td>
+</tr>
+<tr>
+<td>107</td>
+<td>Incorrect financial institution. This is generally an end-user error where they chose the wrong institution, such as E<em>Trade Investments instead of E</em>Trade Bank.</td>
+</tr>
+<tr>
+<td>109</td>
+<td>Password change required at the third-party site.</td>
+</tr>
+<tr>
+<td>155</td>
+<td>Institution is blocking IDX network access</td>
+</tr>
+<tr>
+<td>162</td>
+<td>The account has been moved to another institution.</td>
+</tr>
+<tr>
+<td>163</td>
+<td>Credential keys have changed, or an incorrect login URL, or the bank website is down</td>
+</tr>
+<tr>
+<td>177</td>
+<td>Website unavailable. Some institutions request we not access their site during certain hours.</td>
+</tr>
+<tr>
+<td>179</td>
+<td>Site rejects login because the customer is already logged in.</td>
+</tr>
+<tr>
+<td>192</td>
+<td>Unsupported authentication protocol. This might be a Flash login or image MFAs that are not supported by IDX.</td>
+</tr>
+<tr>
+<td>199</td>
+<td>Invalid personal access code.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fdp-error-codes">FDP Error Codes</h4>
+<table>
+<thead>
+<tr>
+<th><strong>FDP Error Codes</strong></th>
+<th><strong>FDP User Message</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FDP-100</td>
+<td>Be sure to enter your info without typos or other errors. (multi step experience)</td>
+</tr>
+<tr>
+<td>FDP-101</td>
+<td>Something unexpected happened and we couldn't connect to your bank</td>
+</tr>
+<tr>
+<td>FDP-103</td>
+<td>That didn’t work. Try signing in again.</td>
+</tr>
+<tr>
+<td>FDP-105</td>
+<td>The bank site is down for maintenance</td>
+</tr>
+<tr>
+<td>FDP-106</td>
+<td>We couldn’t find an account or tax details linked to the info entered.</td>
+</tr>
+<tr>
+<td>FDP-107</td>
+<td>We found the right bank but still need to find the right transactions there.</td>
+</tr>
+<tr>
+<td>FDP-108</td>
+<td>The bank needs you to do something at their site.</td>
+</tr>
+<tr>
+<td>FDP-109</td>
+<td>Looks like your bank password expired</td>
+</tr>
+<tr>
+<td>FDP-155</td>
+<td>We can't connect to the bank right now. Try another bank</td>
+</tr>
+<tr>
+<td>FDP-162</td>
+<td>Looks like your bank has been acquired by another institution</td>
+</tr>
+<tr>
+<td>FDP-163</td>
+<td>Sorry, we can't update your account right now. Wait a few hours and try updating again</td>
+</tr>
+<tr>
+<td>FDP-177</td>
+<td>Looks like we can't connect to the bank site right now. Wait a few hours and try connecting again</td>
+</tr>
+<tr>
+<td>FDP-179</td>
+<td>Looks like you're already signed into the bank site on another device</td>
+</tr>
+<tr>
+<td>FDP-192</td>
+<td>Bank uses a security method that prevents us from adding it. Sign in to your bank's site, then try again. That might do it.</td>
+</tr>
+<tr>
+<td>FDP-199</td>
+<td>Use your bank Access Code to finish linking this account</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dev-resources/" class="btn btn-neutral float-left" title="Developer Resources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dev-resources/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

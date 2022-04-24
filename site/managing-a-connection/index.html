@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/managing-a-connection/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Managing a Connection - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Managing a Connection";
+        var mkdocs_page_input_path = "managing-a-connection.md";
+        var mkdocs_page_url = "/managing-a-connection/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Managing a Connection</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-profile-the-status-event">Step 1: Profile the Status Event</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-launch-the-status-widget">Step 2: Launch the Status widget</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sample-response">Sample Response</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-launching-manage-connections">Step 2: Launching Manage Connections</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sample-client-side-integration">Sample Client-side Integration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#client-side-integration-sample">Client-Side Integration Sample</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-ongoing-data-refresh-listening-to-data-bridge-events">Step 3: Ongoing Data Refresh - Listening to Data Bridge Events</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Managing a Connection</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="managing-connections">Managing Connections</h1>
+<p>The “Managing Connections” widget provides numerous tools the developer can implement to assist the customer in managing their connections, resolving connection issues, and adding or deleting accounts. There are a number of features:
+- Viewing Status, or messages
+- Adding or deleting a connection
+- Managing existing connections
+- Resolving connection issues</p>
+<h3 id="step-1-profile-the-status-event">Step 1: Profile the Status Event</h3>
+<p>The Status Event is triggered when there is a notification specifically for the user. When “hasNotification” profile status even is true, it invokes the Status widget to display the notification banner to the user.  The Status widget can be included in your app, or invoked through a web app.</p>
+<h3 id="step-2-launch-the-status-widget">Step 2: Launch the Status widget</h3>
+<p>The Status Widget is headless. It returns a response that is consumed by the web app. Use the following steps to integrate the Status widget.</p>
+<ol>
+<li>Consume the <a href="https://static-fdpwidgets.intuitcdn.net/fdp/widgets/assets/lib/fdpwidgets/0.1.1/fdpwidgets.min.js">JSBundle</a>
+Note: This link will be slightly different in the future..</li>
+<li>Pass the parameters described in the following sample client-side integration sample.</li>
+</ol>
+<pre><code class="language-java">&lt;!-- Load javascript --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://static-fdpwidgets.intuitcdn.net/fdp/widgets/assets/lib/fdpwidgets/0.1.1/fdpwidgets.min.js&quot;&gt;&lt;/script&gt;
+
+//src url is TBD
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+//Set props - actual values TBD
+const props = {
+   offeringId: 'com.creditkarma',
+    apiKey: '123456api-asProvided',
+    accessToken: 'accesstoken received from id federation'
+intent: ['liabilities'],
+intentFilter: {
+    accountFilter: {
+        account Subtypes: [‘CREDITCARD’]
+    }
+},
+flowName: 'manage-connection-plugin/accountsStatus,
+environment: 'e2e,
+onEvent: function({eventName, eventData}) {
+    //handle event
+},
+onError: function({errorName, errorData}) {
+    //handle error
+    }
+}
+//When ready to launch invoke following
+IntuitFDX.launch(props).render(‘.app’)
+&lt;/script&gt;
+</code></pre>
+<h3 id="sample-response">Sample Response</h3>
+<pre><code class="language-java">{
+&quot;severity&quot;: &quot;ERROR&quot;
+&quot;type&quot;: &quot;error&quot;
+&quot;widgetId&quot;: &quot;manage-connection-plugin/main&quot;,
+&quot;title&quot;: &quot;title of the message&quot;,
+&quot;detailMessage&quot;: &quot;message for the use case&quot;,
+&quot;actionTitle&quot;: &quot;text of action link&quot;
+}
+</code></pre>
+<h3 id="step-2-launching-manage-connections">Step 2: Launching Manage Connections</h3>
+<p>After receiving the response from the Status widget, you can display a notification banner to the user and display the error message. When the user clicks on the banner, you can invoke the Manage Connection widget.</p>
+<h4 id="sample-client-side-integration">Sample Client-side Integration</h4>
+<p>flowName: 'manage-connection-plugin/main'</p>
+<p>Note: The UI for the client-side integration for the Manage Connection widget looks the same as the Add Connection widget. The difference is the flowName in the configuration object.</p>
+<h5 id="client-side-integration-sample">Client-Side Integration Sample</h5>
+<pre><code class="language-java">&lt;!-- Load javascript --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://static-fdpwidgets.intuitcdn.net/fdp/widgets/assets/lib/fdpwidgets/0.1.1/fdpwidgets.min.js&gt;&lt;/script&gt;
+//src url is TBD
+&lt;script type=&quot;text/javascript&quot;&gt;
+//Set props - actual values TBD
+const props = {
+    offeringId: 'com.creditkarma',
+    apiKey: '123456api-asProvided',
+    accessToken: 'accesstoken received from id federation'
+    intents: ['liabilities'],
+    intentFilter: {
+        accountFilter: {
+            account Subtypes: [‘CREDITCARD’]
+    }
+},
+flowName: 'manage-connection-plugin/main',
+is7216: false,
+environment: 'e2e',
+onEvent: function({eventName, eventData}) {
+//handle event
+},
+onError: function({errorName, errorData}) {
+//handle error
+}
+}
+//When ready to launch invoke following
+IntuitFDX.launch(props).render(‘.app’)
+&lt;/script&gt;
+</code></pre>
+<h3 id="step-3-ongoing-data-refresh-listening-to-data-bridge-events">Step 3: Ongoing Data Refresh - Listening to Data Bridge Events</h3>
+<p>IDX runs a batch refresh of the data for connections created using widgets. All new/updated data is published using the events sent through Data Bridge.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../adding-connection/" class="btn btn-neutral float-left" title="Adding a Connection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../useCases/" class="btn btn-neutral float-right" title="Supported Use Cases">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../adding-connection/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../useCases/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

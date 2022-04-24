@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/adding-connection/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Adding a Connection - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Adding a Connection";
+        var mkdocs_page_input_path = "adding-connection.md";
+        var mkdocs_page_url = "/adding-connection/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Adding a Connection</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#steps-to-add-a-connection">Steps to Add a Connection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-launch-the-widget">Step 1: Launch the Widget</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-handling-the-callback">Step 2: Handling the callback</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-3-listening-to-databridge-events">Step 3: Listening to Databridge Events</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Adding a Connection</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="adding-a-connection">Adding a Connection</h1>
+<h2 id="overview">Overview</h2>
+<p>IDX Widgets use the "Adding a Connection” tool to connect users to their providers such as banks (Chase, Wells Fargo, or Citibank, etc.) or business providers, such as Amazon Business with a developer’s offering.</p>
+<h2 id="steps-to-add-a-connection">Steps to Add a Connection</h2>
+<p>Adding a connection allows the user to select their institution, enter their authentication details, and receive a success or failure message when complete. When entering their authentication details, users may also be prompted for two-factor authentication.</p>
+<h3 id="step-1-launch-the-widget">Step 1: Launch the Widget</h3>
+<ol>
+<li>Consume the <a href="https://static-fdpwidgets.intuitcdn.net/fdp/widgets/assets/lib/fdpwidgets/0.1.1/fdpwidgets.min.js">JSBundle</a>.
+Note: This link will change in the future.</li>
+<li>Pass the appropriate configuration parameters. The IDX widget supports customization and configuration through the different properties sent as a part of fdpSettings properties. Typically, these are the key/value pairs that you send while initializing a widget.
+The following is an example:</li>
+</ol>
+<pre><code class="language-javascript">&lt;!-- Load javascript --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;[https://static-fdpwidgets.intuitcdn.net/fdp/widgets/assets/lib/fdpwidgets/0.1.1/fdpwidgets.min.js](https://static-fdpwidgets.intuitcdn.net/fdp/widgets/assets/lib/fdpwidgets/0.1.1/fdpwidgets.min.js)&quot;&gt;
+&lt;/script&gt;
+&lt;!-- //src url is TBD --&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+//Set props - actual values TBD
+const props = {
+    offeringId: 'com.creditkarma',
+    apiKey: '123456api-asProvided',
+    accessToken: 'accesstoken received from id federation'
+intents: ['liabilities'],
+intentFilter: {
+    accountFilter: {
+    account Subtypes: [‘CREDITCARD’]
+    }
+},
+flowName: 'fdp/addConnection',
+is7216: false,
+environment: 'e2e,
+onEvent: function({eventName, eventData}) {
+//handle event
+},
+onError: function({errorName, errorData}) {
+//handle error
+    }
+}
+// When ready to launch invoke following IntuitFDX.launch(props).render(‘.app’)
+&lt;/script&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>Property Name</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Req</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>Sets the BrowserAuth API key used for all API calls to the fdx application service. You get this by onboarding to the "FDX Application Service" in the Services Portal as a WebBrowser client. This is a mandatory property.</td>
+<td>string</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>offeringId</td>
+<td>Set the offering Id</td>
+<td>string</td>
+<td>No</td>
+</tr>
+<tr>
+<td>enableEscapeRoute</td>
+<td>Globally enables the presence of escape routes in the widgets on auth screens</td>
+<td>boolean</td>
+<td>No</td>
+</tr>
+<tr>
+<td>enableFeatures</td>
+<td>Enables available <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-core-app/blob/master/src/enums/FeatureEnum.js">features</a> for the flow</td>
+<td>array</td>
+<td>No</td>
+</tr>
+<tr>
+<td>oauthProductName</td>
+<td>Set the oauth product name. This prop is required if the oauth feature is enabled.</td>
+<td>string</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>Sets the theme for fdp widget. Available options: mint, sbg2, turbo, ctg</td>
+<td>string</td>
+<td>No</td>
+</tr>
+<tr>
+<td>setProductSupportUrl</td>
+<td>In certain error scenarios, provide a link to a separate support site to be popped open in another tab. Defaults to <a href="https://www.intuit.com/support/">https://www.intuit.com/support/</a></td>
+<td>string</td>
+<td>No</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>Sets the product name used in analytics events.</td>
+<td>string</td>
+<td>No</td>
+</tr>
+<tr>
+<td>tokenOverrides</td>
+<td>Used to override default widget text. Note: overriding will affect localization and styling.</td>
+<td>object</td>
+<td>No</td>
+</tr>
+<tr>
+<td>searchResultsFilter</td>
+<td>Used to filter a particular provider from provider search recommendations. Format : "NOT id.orig_doc_id: PROVIDER ID"</td>
+<td>string</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-2-handling-the-callback">Step 2: Handling the callback</h3>
+<p>As part of onEvent callback, the widget returns the "onConnectSuccess" event, when a connection is successful. The callback response looks like this:</p>
+<pre><code class="language-java">{
+    &quot;correlationId&quot;: &quot;e1b25b4b-f0ba-4029-a4ff-641c03ed0fc7&quot;,
+    &quot;accounts&quot;: [{
+        &quot;id&quot;: &quot;urn:account:fdp::accountid:220e44e3-3e48-11eb-b6c7-76b7493295df&quot;,
+        &quot;type&quot;: &quot;LINEOFCREDIT&quot;,
+        &quot;subtype&quot;: &quot;CREDITCARD&quot;,
+        &quot;displayInfo&quot;: {
+            &quot;nickname&quot;: &quot;Master Card 2222&quot;,
+            &quot;displayName&quot;: &quot;Master2222&quot;,
+            &quot;accountNumberDisplay&quot;: &quot;XXXX2222&quot;
+        }
+    }],
+    &quot;providerDetail&quot;: {
+        &quot;name&quot;: &quot;NI Bank For Agg Modernization&quot;,
+        &quot;logos&quot;: [{
+                &quot;uri&quot;: &quot;https://financialprovider-e2e-logos.platform.intuit.com/v1/logos/3963f676-77e0-4359-a0b4-2c2b45d6af45?logo_requester=8937411052706320865&quot;,
+                &quot;height&quot;: 24,
+                &quot;width&quot;: 220,
+                &quot;resolution&quot;: &quot;low&quot;
+            },
+            {
+                &quot;uri&quot;: &quot;https://financialprovider-e2e-logos.platform.intuit.com/v1/logos/7e26de69-e195-4691-a2e0-56c3c4ebd48e?logo_requester=8937411052706320865&quot;,
+                &quot;height&quot;: 209,
+                &quot;width&quot;: 558,
+                &quot;resolution&quot;: &quot;low&quot;
+            }
+        ]
+    }
+}
+
+</code></pre>
+<p>If an error occurs, the Widget displays an error message and sends the onError callback with the error details.</p>
+<h4 id="step-3-listening-to-databridge-events">Step 3: Listening to Databridge Events</h4>
+<p>The data bridge allows the secure transfer of data between IDX and external partners. The data bridge
+- Performs application level data encryption
+- Publishes data to specific location for external consumption
+- Can filter JSON data attributes</p>
+<p>The Data Bridge can accept data from any Event Bus kafka topic.
+<img alt="" src="../img/data-bridge-high-level-flow.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../capabilities/" class="btn btn-neutral float-left" title="IDX Capabilities"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../managing-a-connection/" class="btn btn-neutral float-right" title="Managing a Connection">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../capabilities/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../managing-a-connection/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

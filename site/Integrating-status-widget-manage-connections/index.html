@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/Integrating-status-widget-manage-connections/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Status Widget Integration - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Status Widget Integration";
+        var mkdocs_page_input_path = "Integrating-status-widget-manage-connections.md";
+        var mkdocs_page_url = "/Integrating-status-widget-manage-connections/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Status Widget Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#initializing-the-status-widget">Initializing the Status Widget</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#status-widget-example">Status Widget Example</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ad-hoc">Ad Hoc</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-sandbox-api">Using the Sandbox API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#status-widget-initialization-properties">Status Widget Initialization Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#invoking-the-status-widget-api">Invoking the Status Widget API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#status-widget-publish-parameters">Status Widget Publish Parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consuming-and-processing-the-status-response">Consuming and Processing the Status Response</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Status Widget Integration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="integrating-the-status-widget-for-managing-connections">Integrating the Status Widget for Managing Connections</h1>
+<p>The Status widget is the primary source for gathering information about connections and accounts including:</p>
+<ul>
+<li>Error Status</li>
+<li>Provider Outage Status</li>
+<li>Standard error message interface </li>
+<li>Actions like updating credentials.
+The Status widget is headless. It does not have a UI and can be accessed via its API.</li>
+</ul>
+<h2 id="initializing-the-status-widget">Initializing the Status Widget</h2>
+<p>There are two ways to initialize the Status Widget.
+1. Construct the object directly.</p>
+<pre><code class="language-java">val statusWidget = StatusWidget(
+        context = context,
+        env = StatusWidgetInitializer.Environment.E2E,
+        sandBox = sandBox,
+        apiKey = apiKey,
+        offeringId = offeringId,
+        isRealmContext = isRealmContext
+    )
+</code></pre>
+<ol>
+<li>Set up the StatusWidgeinitializer
+ ```java
+ StatusWidgetInitializer.apply { 
+             context = applicationContext 
+             environment = StatusWidgetInitializer.Environment.E2E 
+             sandBox = appSandbox 
+             apiKey = "API Key" 
+             offeringId = "Offering Id" 
+             isRealmContext = true 
+         } 
+ val statusWidget = StatusWidgetInitializer.getStatusWidget() </li>
+</ol>
+<pre><code>### Use the StatusWidget to Call APIs
+You can use the StatusWidget to retrieve connections by accountIds.
+```java
+ statusWidget.fetchConnectionsByAccountIds(listOf(&quot;AccountId1&quot;,&quot;AccountId2&quot;)) { success, connections, throwable -&gt; 
+          if (success) { 
+              // Call success, connections are returned. 
+              val connectionsReturned = connections 
+          } else { 
+              // Call fail, check throwable for reasons. 
+              val error = throwable.toString() 
+          } 
+      } 
+</code></pre>
+<h3 id="status-widget-example">Status Widget Example</h3>
+<p>Use the following steps to enable the status widget.
+- Declare the widget as a dependency in the plugin <code>config.json</code> file.<p></p>
+<pre><code class="language-java">{
+&quot;dependencies&quot;: {
+&quot;widgets&quot;: [&quot;manage-connection-plugin/status@1.0.0&quot;]
+    }
+}
+</code></pre>
+<ul>
+<li>Declare the widget as a dependency in your widget descriptor's yaml file.</li>
+</ul>
+<pre><code class="language-java">dependencies:
+widgets:
+- manage-connection-plugin/status@1.0.0
+</code></pre>
+<p>There are two ways to consume the widget:
+* Ad Hoc (as a higher order component)
+* Using the Sandbox API</p>
+<h5 id="ad-hoc">Ad Hoc</h5>
+<pre><code class="language-java">import PropTypes from 'prop-types';
+import React from 'react';
+import BaseWidget from 'web-shell-core/widgets/BaseWidget';
+import Widget from 'web-shell-core/widgets/HOCWidget';
+
+class HighOrderConsumer extends BaseWidget {
+    constructor(props) {
+        super(props);
+    }
+
+getChildContext() {
+    return {
+        sandbox: this.props.sandbox,
+    };
+}
+
+render() {
+    return (
+    &lt;div className=&quot;marketing&quot;&gt;
+        &lt;div style={style}&gt;
+        Consumer Widget provided by the Marketing Plugin.
+    &lt;br /&gt;
+        Composes the Customer Widget from the Commerce Plugin
+    &lt;br /&gt;
+    directly in JSX as a Higher-Order Component.
+    &lt;Widget
+        widgetId=&quot;manage-connection-plugin/status@1.0.0&quot;
+        onReady={() =&gt; this._onWidgetReady()}
+    /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    );
+}
+}
+        HighOrderConsumer.childContextTypes = {
+            sandbox: PropTypes.shape({
+            logger: PropTypes.shape({
+            log: PropTypes.func,
+        }),
+    }),
+};
+export default HighOrderConsumer;
+</code></pre>
+<h3 id="using-the-sandbox-api">Using the Sandbox API</h3>
+<pre><code class="language-java">componentDidMount() {
+    this.props.sandbox.widgets.getWidget(&quot;manage-connection-plugin/status@1.0.0&quot;).then((Widget) =&gt; {
+        /// do something with the widget
+    });
+}
+</code></pre>
+<h3 id="status-widget-initialization-properties">Status Widget Initialization Properties</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Properties</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+<td>true</td>
+<td>BrowserAuth API key used for all API calls to the IDX application service</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>string</td>
+<td>true</td>
+<td>(qal, prf, e2e , prd) points to the specified back end APIs</td>
+</tr>
+<tr>
+<td>companyId</td>
+<td>string</td>
+<td>false</td>
+<td>ID to authenticate against realm context, if not using user context</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>true</td>
+<td>A locale to swap out all tokens for that locale's language (e.g., fr-CA)</td>
+</tr>
+<tr>
+<td>offeringId</td>
+<td>string</td>
+<td>true</td>
+<td>Offering ID that identifies you. You can also look this up for your project in the Services Portal</td>
+</tr>
+<tr>
+<td>isRealmContext</td>
+<td>boolean</td>
+<td>false</td>
+<td>If setting it true, authenticate against realm context, if not using user context</td>
+</tr>
+<tr>
+<td>sandbox</td>
+<td>object</td>
+<td>true</td>
+<td>The sandbox provides an API for widgets and plugins to interact with standard capabilities provided by an application</td>
+</tr>
+<tr>
+<td>fdpAccountIds</td>
+<td>array</td>
+<td>false</td>
+<td>Optional array of IDX account IDs to get specific data about passed accounts. When omitted, all connection data is returned.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="invoking-the-status-widget-api">Invoking the Status Widget API</h3>
+<p>The following example uses the sandbox API. After mounting the widget with previously detailed properties, invoke the desired API, publish an intent via sandbox topic publish: see Publish Parameters for more details</p>
+<pre><code class="language-java">this.props.sandbox.publish('{topic}', data);
+</code></pre>
+<h3 id="status-widget-publish-parameters">Status Widget Publish Parameters</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>topic</td>
+<td>string</td>
+<td>fdp.mc.status.error</td>
+<td>The topic parsed for data about the credential/account level errors for connections attached to a user.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>see example below</td>
+<td>The object containing the callback function receives the data returned with the property name callback along with any other optional metadata properties</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">this.props.sandbox.publish(`fdp.mc.status.errror`, {
+callback: (topic, data) =&gt; {
+// do something with data returned by status widget,
+// widget will also send back original invoked topic name
+    },
+});
+</code></pre>
+<h3 id="consuming-and-processing-the-status-response">Consuming and Processing the Status Response</h3>
+<p>The following is a sample response from the Status SDK.</p>
+<pre><code class="language-java">[  {
+&quot;providerId&quot;: &quot;90aec3e4-0d85-45fa-8a1b-b2ce655d6705&quot;,
+&quot;legacyId&quot;: &quot;50000046&quot;,
+&quot;name&quot;: &quot;NI Bank For Agg Modernization&quot;,
+&quot;type&quot;: &quot;Raw&quot;,
+&quot;logoUrl&quot;: &quot;https://financialprovider-e2e-logos.platform.intuit.com/v1/logos/3963f676-77e0-4359-a0b4-2c2b45d6af45?logo_requester=289373868250104530&quot;,
+&quot;credentialSetId&quot;: &quot;48eec9cd-b257-4ab2-8831-ce749cb6c6ce&quot;,
+&quot;statusDetail&quot;: [
+{
+&quot;code&quot;: &quot;FI_OUTAGE&quot;,
+&quot;severity&quot;: &quot;ERROR&quot;,
+&quot;type&quot;: &quot;provider&quot;,
+&quot;title&quot;: &quot;Connection down&quot;,
+&quot;detailMessage&quot;: &quot;Sorry, connection to this bank isn't available right now. Please try again later.&quot;,
+},
+{
+&quot;code&quot;: &quot;103&quot;,
+&quot;severity&quot;: &quot;ERROR&quot;,
+&quot;type&quot;: &quot;credential&quot;,
+&quot;widgetId&quot;: &quot;fdp/refreshconnection&quot;,
+“loadWIdget”: “Refresh_connection”,
+&quot;title&quot;: &quot;Fix connection&quot;,
+&quot;detailMessage&quot;: &quot;Something kept us from connecting to get transactions here. Let's see if we can fix that. (103)&quot;,
+&quot;actionTitle&quot;: &quot;Fix now&quot;,
+&quot;widgetOptions&quot;: {
+&quot;providerId&quot;: &quot;90aec3e4-0d85-45fa-8a1b-b2ce655d6705&quot;,
+&quot;providerName&quot;: &quot;NI Bank For Agg Modernization&quot;,
+&quot;credentialSetId&quot;: &quot;48eec9cd-b257-4ab2-8831-ce749cb6c6ce&quot;
+}
+},
+{
+&quot;code&quot;: &quot;CREATED&quot;,
+&quot;reasonCode&quot;: &quot;NA&quot;,
+&quot;targetAuthorizationMethod&quot;: &quot;OAUTH&quot;,
+&quot;millisecondsLeft&quot;: -30680899346,
+&quot;daysLeft&quot;: -355,
+&quot;type&quot;: &quot;migration&quot;,
+&quot;widgetId&quot;: &quot;fdp/oauthMigration&quot;,
+&quot;widgetOptions&quot;: {
+&quot;providerId&quot;: &quot;65c14e48-0361-4d23-91ec-c3b2d15b9107&quot;,
+&quot;providerName&quot;: &quot;MockProvider-100&quot;,
+&quot;migrationId&quot;: 743432,
+&quot;sourceCredentialSetId&quot;: &quot;84bb8274-088f-4d94-90b3-0bb99689588e&quot;,
+&quot;migrationCredentialStatusCode&quot;: &quot;377&quot;,
+&quot;targetChannelId&quot;: &quot;d6322efa-661e-432f-ae58-297906e913b1&quot;
+}
+}
+
+],
+&quot;accounts&quot;: [
+{
+&quot;accountId&quot;: &quot;urn:account:fdp::accountid:4f1a5d11-4566-11ea-8fd7-000064618dc2&quot;,
+&quot;accountNumberMasked&quot;: &quot;XXXX5943&quot;,
+&quot;statusDetail&quot;: [
+{
+&quot;code&quot;: &quot;324&quot;,
+&quot;severity&quot;: &quot;ERROR&quot;,
+&quot;type&quot;: &quot;account&quot;,
+&quot;title&quot;: &quot;Confirm linked accounts&quot;,
+&quot;detailMessage&quot;: &quot;Some of your linked accounts here got unlinked. Using the QuickBooks website (not the app), go to the bank and confirm the ones you need. (324)&quot;
+}
+]
+},
+{
+&quot;accountId&quot;: &quot;urn:account:fdp::accountid:4f1a5d11-4566-11ea-8fd7-000064618dc2&quot;,
+&quot;accountNumberMasked&quot;: &quot;XXXX5943&quot;,
+&quot;statusDetail&quot;: [
+{
+&quot;code&quot;: &quot;324&quot;,
+&quot;severity&quot;: &quot;ERROR&quot;,
+&quot;type&quot;: &quot;account&quot;,
+&quot;title&quot;: &quot;Confirm linked accounts&quot;,
+&quot;detailMessage&quot;: &quot;Some of your linked accounts here got unlinked. Using the QuickBooks website (not the app), go to the bank and confirm the ones you need. (324)&quot;
+}
+]
+}
+]
+}
+]
+</code></pre>
+<p>There are two key parameters in the response that requiring attention, <code>widgetId</code> and <code>widgetOptions</code>.
+For errors that a user can fix, these two parameters are used to launch the appropriate widget flow for user input.
+- widgetId: In case of an error that a user can fix, widgetId is sent in the response. The widgetId
+is used to invoke, edit, fix, or refresh flows for fixing the user actionable errors.
+- widgetOptions: Widget options are the additional properties passed to the appropriate flow for fixing the bank connection error.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../integrations/" class="btn btn-neutral float-left" title="IDX Integration Guides"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../web-integration-manage-connections/" class="btn btn-neutral float-right" title="Web Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../integrations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../web-integration-manage-connections/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

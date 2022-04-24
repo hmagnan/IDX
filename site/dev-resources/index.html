@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/dev-resources/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Developer Resources - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Developer Resources";
+        var mkdocs_page_input_path = "dev-resources.md";
+        var mkdocs_page_url = "/dev-resources/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Developer Resources</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-parameters">Configuration Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#widget-response-parameters">Widget Response Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-spec-and-swagger">API Spec and Swagger</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#event-headers">Event Headers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#native-integration-details">Native Integration Details</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Developer Resources</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="developer-resources">Developer Resources</h1>
+<h2 id="configuration-parameters">Configuration Parameters</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intents</td>
+<td>Array (required)</td>
+<td>["liabilities"]</td>
+<td>The IDX use case</td>
+</tr>
+<tr>
+<td>intentFilter</td>
+<td>Object (optional)</td>
+<td>{<p>accountFilter:{<p>account Subtypes: ['CREDIT CARD']<br>}<br>},</td>
+<td>If the account types are not supported by the intent, use this parameter to notify which account types you are interested in.</td>
+</tr>
+<tr>
+<td>offeringId</td>
+<td>String (required)</td>
+<td>Offering Id</td>
+<td>Intuit provides</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>String (required)</td>
+<td></td>
+<td>Access token as generated by the calling Identity.</td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>String (required)</td>
+<td></td>
+<td>API Key - as provided during onboarding, for app authentication.</td>
+</tr>
+<tr>
+<td>flowName</td>
+<td>String (required)</td>
+<td>"fdp/addConnection"</td>
+<td>Provided for choosing an experience presented to the user.</td>
+</tr>
+<tr>
+<td>is7216</td>
+<td>Bool (required)</td>
+<td>false</td>
+<td>For tax-related data, this needs to be set as true, for non-tax flows, set it to false</td>
+</tr>
+<tr>
+<td>enableOauthInWebView</td>
+<td>Bool (optional default: false)</td>
+<td></td>
+<td>When set to true, it enables OAuth authentication to work in native WebViews. Set it to true when consuming WebApp in native apps, otherwise set it to false</td>
+</tr>
+<tr>
+<td>appScheme</td>
+<td>String (optional)</td>
+<td>Custom scheme for deep linking</td>
+<td>Send this when consuming WebApp in native apps. This param is required for OAuth authentication.</td>
+</tr>
+<tr>
+<td>redirectUrl</td>
+<td>String (optional)</td>
+<td></td>
+<td>Used in WebView OAuth flows for native apps. After the user authenticates on the FI screen in an external browser, the redirectUrl gets returned to the native application. That url needs to be passed to the FDP widget as a prop update</td>
+</tr>
+</tbody>
+</table>
+<h2 id="widget-response-parameters"><strong>Widget Response Parameters</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>severity</td>
+<td>String</td>
+<td>ERROR</td>
+<td>This parameter indicates the severity of the notification. In the future, we may support more values for this parameter like "INFO" and "WARNING"</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>error</td>
+<td>This parameter indicates the type of the notification. In the future, we may support more types of the notifications such as "migration"</td>
+</tr>
+<tr>
+<td>widgetId</td>
+<td>String</td>
+<td>manage-connection-plugin/main</td>
+<td>This parameter indicates the widget name of the Manage Connection Plugin that to be invoked when the user clicks on notification experience</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td></td>
+<td>This is the text that displays in the notification banner experience</td>
+</tr>
+<tr>
+<td>detailMessage</td>
+<td>String</td>
+<td></td>
+<td>This is the detailed message text that displays on the notification banner experience</td>
+</tr>
+<tr>
+<td>actionTitle</td>
+<td>String</td>
+<td></td>
+<td>This is the text displayed on the action link in the user actionable errors, that displays in the notification banner experience</td>
+</tr>
+</tbody>
+</table>
+<h2 id="api-spec-and-swagger"><strong>API Spec and Swagger</strong></h2>
+<p>The API spec (<a href="https://github.intuit.com/fdp-common/api/blob/master/specification/v1/fdp.yml">fdp.yml</a>) and Swagger doc (<a href="https://drive.google.com/file/d/11a42d0-m-LZ-Ep-KMpYCL57vOzFjLWNx/view?usp=sharing">doc.html</a>) can be accessed from Google Drive. Download the doc.html and open it in a browser.
+Start with these entities:
+* LineOfCreditAccount
+* LineOfCreditBill
+* LoanAccount
+* LoanBill
+These entries include all of the attributes from the Account and Bill entity.
+The events published through DataBridge adhere to the Event entity in the spec. The headers published with the event are detailed in the next section.</p>
+<h2 id="event-headers"><strong>Event Headers</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute Name</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Possible values</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intuit<em>_tid</em></td>
+<td>Required</td>
+<td><em>uuid</em></td>
+</tr>
+<tr>
+<td>event<em>_type</em></td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>entity<em>_type</em></td>
+<td>Required</td>
+<td>One of Account, Bill or ProfileStatus</td>
+</tr>
+<tr>
+<td>entity_operation</td>
+<td>Required</td>
+<td>* create (creates an</td>
+</tr>
+<tr>
+<td>* update (updates an entity)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* delete (deletes an entity)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* status_change (when a ProfileStatus event is published)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>version</td>
+<td>Required</td>
+<td><em>3.0</em></td>
+</tr>
+<tr>
+<td>content_type</td>
+<td>Required</td>
+<td><em>application/json</em>, ...</td>
+</tr>
+<tr>
+<td>intuit_fdp_correlation_id</td>
+<td>Optional</td>
+<td><em>uuid</em> A uuid tied to an Add Connection event if the event originated from widgets</td>
+</tr>
+<tr>
+<td>intuit_appid</td>
+<td>Required</td>
+<td>Application id of the app/service publishing the event</td>
+</tr>
+<tr>
+<td>intuit_userid</td>
+<td>Required</td>
+<td></td>
+</tr>
+<tr>
+<td>intuit_flowid</td>
+<td>Optional</td>
+<td>guid</td>
+</tr>
+<tr>
+<td>intuit_fdp_profile_type</td>
+<td>Required</td>
+<td><em>user</em></td>
+</tr>
+<tr>
+<td>intuit_corpid</td>
+<td>Optional</td>
+<td>Used in DASH/Admin use cases</td>
+</tr>
+</tbody>
+</table>
+<h2 id="native-integration-details">Native Integration Details</h2>
+<p>In the scenario where native apps are rendering the web experience in a WebView, additional configuration properties are required to enable OAuth authentication. Deep linking using app schemes is used to facilitate communication between an external browser and the native application.
+The OAuth authentication flow is as follows:
+1. Launch the FDP widget with these additional configuration props:</p>
+<pre><code class="language-java">    {
+        enableOauthInWebview: true,
+        appScheme: ‘yourAppScheme://’,
+        redirectUrl: ‘redirectUrl’
+    }
+</code></pre>
+<p>The IDX widget in the WebView launches the financial institutions (FI) login flow in an external browser. 
+- The user completes their authenticate on the FI login site.
+- Upon user completion of the FI login, the external browser links back to the native application with the redirect URL.<br>
+<strong>Note</strong>: A handler must be implemented to listen to the redirect event and get the URL data. The handler must pass the URL data from the WebView to the FDP widget to continue establishing the FI connection.<br>
+<strong>Note</strong>: From Native apps you first have to consume your own Webapp and then consume the Widget. You cannot consume the Widget directly in Native apps.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../useCases/" class="btn btn-neutral float-left" title="Use Cases"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../idx-events/" class="btn btn-neutral float-right" title="IDX Events">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../useCases/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../idx-events/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

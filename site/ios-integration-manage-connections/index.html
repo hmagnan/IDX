@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/ios-integration-manage-connections/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>iOS Integration - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "iOS Integration";
+        var mkdocs_page_input_path = "ios-integration-manage-connections.md";
+        var mkdocs_page_url = "/ios-integration-manage-connections/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">iOS Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#use">Use</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#widget-configuration">Widget Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#launching-manageconnection-widget">Launching ManageConnection Widget</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ids-product-theme-support">IDS Product Theme support</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#show-support-link-for-error-experiences-eg-108-111-errors">Show Support link for error experiences E.g. 108 , 111 errors</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#navigation-bar-appearance">Navigation Bar Appearance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uiconfig-and-exposed-properties">UIConfig and Exposed Properties:</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#initial-properties">Initial Properties</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#widget-options">Widget Options</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#refreshconnecting">RefreshConnecting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#erroneousaccount-launch">ErroneousAccount Launch</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unlink-connection">Unlink Connection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enabledisable-account">Enable/Disable Account</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#supported-locales">Supported Locales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unsupported-providers">Unsupported Providers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#analytics">Analytics</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#widget-event-delegate">Widget Event Delegate</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#manageconnection-events">ManageConnection Events</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fdp-widget-events">FDP Widget Events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#widget-notification-observers">Widget Notification Observers</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>iOS Integration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ios-integration-for-manage-connection-widget">iOS Integration for Manage Connection Widget</h1>
+<p>Manage Connection Widget is an application framework that allows users to see all of their existing connections and connections. Users will also be manage their connections - view notifications, fix, edit credentials and migrate to better connectivity.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Xcode 10.1+</li>
+<li>Swift 5.0+</li>
+<li>Cocoapods 1.6.1</li>
+<li>Mobile AppShell framework 5.1.0</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To install ManageConnectionFrameWork, simply add the following line to your Podfile:</p>
+<pre><code class="language-java">pod &quot;ManageConnectionFrameWork&quot;
+</code></pre>
+<h2 id="use">Use</h2>
+<p>Use the <a href="https://github.intuit.com/fabric-app-shells/mobile-shell-ios">Mobile AppShell framework</a> to load the Manage Connection Widget.</p>
+<h2 id="authentication">Authentication</h2>
+<p>Requires the hosting app to implement the <code>Sandbox.authenticationDelegate</code> to provide an OAuth2 token. The OAuth2 token is used by the widget to make requests to the realm provider backend.</p>
+<h3 id="widget-configuration">Widget Configuration</h3>
+<p>Manage Connection widget depends upon FDX Widget, so your app will need to specify widger descriptor for FDX widget in the plugin config.</p>
+<pre><code class="language-java">    {
+    &quot;id&quot;: &quot;fdx-widget-plugin&quot;,
+    &quot;extensions&quot;: {},
+    &quot;widgets&quot;: {
+    &quot;fdp-widget&quot;: {
+        &quot;1.21.2&quot;: {
+        &quot;descriptor&quot;: {
+        &quot;id&quot;: &quot;fdp-widget&quot;,
+        &quot;version&quot;: &quot;1.21.2&quot;,
+        &quot;main&quot;: &quot;fdxnative&quot;,
+        &quot;widgetType&quot;: &quot;reactNative&quot;,
+        &quot;supportedPlatforms&quot;: [
+        &quot;iOS&quot;
+    ],
+        &quot;platformConfiguration&quot;: {
+        &quot;iOS&quot;: {
+        &quot;frameworkName&quot;: &quot;FDXNative&quot;,
+        &quot;resourceBundleName&quot;: &quot;FDXNative.bundle&quot;,
+        &quot;jsBundleResource&quot;: &quot;main.jsbundle&quot;
+        }
+        }
+    }
+}
+}
+}
+}
+</code></pre>
+<p>To load the FDP Widget from Manage Connection you need to know the FDP Widget descriptor information that was provided in the plugin config. To retrieve that information you must implement the following appshell appDelegate method and return widgetId and widgetVersion that were previously defined.</p>
+<pre><code class="language-java">func getData(_ data: AnyObject?, context: [String: AnyObject]?, completionHandler: @escaping (_ data: AnyObject?, _ error: NSError?) -&gt; Void) {
+
+if data as? String == &quot;fdpWidgetAppShellConfig&quot; {
+let widgetConfig = [ &quot;widgetId&quot; : &quot;fdp-widget&quot; , &quot;widgetVersion&quot; : &quot;1.21.2&quot;] as AnyObject
+completionHandler( widgetConfig, nil)
+} else {
+completionHandler(nil, SampleDataDelegateError.notImplemented as NSError)
+}
+}
+</code></pre>
+<h3 id="launching-manageconnection-widget">Launching ManageConnection Widget</h3>
+<p>To launch ManageConnection widget, hosting app can get ManageConnection RootViewController by initializing ManageConnectionWidget class &amp; calling func createViewController() -&gt; UIViewController?.
+After getting the root viewcontroller, the hosting app can add it as a child view controller or push it to a navigation stack based on how they want to present the manageconnection widget.
+For more details on how to launch manageconnetion widget, please see the implementation example <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Example/ManageConnectionFrameWork/ManageConnectionViewController.swift#L126">here</a>.</p>
+<h3 id="ids-product-theme-support">IDS Product Theme support</h3>
+<p>In order for the ManageConnection widget to support product themes for all the IDS components used in the widget, the hosting app needs to set the IDS AppTheme as mentioned <a href="https://github.intuit.com/design-systems/ui-components-mobile-ios#set-your-apps-theme">here</a>.
+The <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/ManageConnectionFrameWork.podspec">podspec</a> file provides all of the IDS components being used by ManageConnection widget and host app has to make sure to import the respective *designDataiOS.json files so the ManageConnection widget can adopt the relevant themes for the IDS components.
+Please find more details on how to set the AppTheme in our demo app <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Example/ManageConnectionFrameWork/ManageConnectionViewController.swift#L287">here</a>.</p>
+<h4 id="show-support-link-for-error-experiences-eg-108-111-errors">Show Support link for error experiences E.g. 108 , 111 errors</h4>
+<p>To Show help tips and links to help articles on error messages you have to implement following appshell appDelegate delegate method and return support links for the errors you want to show help articles.
+Example- The 108 error message on the web “Sign in to your bank’s website and respond to any new messages. If that doesn’t fix the problem, here are some tips to help you” More Tips” -&gt; Links to <a href="https://quickbooks.intuit.com/learn-support/en-us/sync-bank-feeds/fix-banking-error-108/00/369802">https://quickbooks.intuit.com/learn-support/en-us/sync-bank-feeds/fix-banking-error-108/00/369802</a>
+Example- The 111 error message on the safari “Learn more” -&gt; Links to <a href="https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746">https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746</a></p>
+<pre><code class="language-java">func getData(_ data: AnyObject?, context: [String: AnyObject]?, completionHandler: @escaping (_ data: AnyObject?, _ error: NSError?) -&gt; Void) {
+
+if ( data as? String == &quot;getSupportLinkForBankError&quot; ) {
+let supportLinks = [ &quot;111&quot;: [&quot;title&quot; : &quot;Learn more&quot; , &quot;link&quot;: &quot;https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746&quot;] , &quot;108&quot;: [&quot;title&quot; : &quot;Learn more&quot; , &quot;link&quot;: &quot;https://quickbooks.intuit.com/learn-support/en-us/sync-bank-feeds/fix-banking-error-108/00/369802&quot;]]
+
+completionHandler( supportLinks as AnyObject, nil)
+}
+}
+</code></pre>
+<h4 id="navigation-bar-appearance">Navigation Bar Appearance</h4>
+<p>The navigation bar appearance needs to be set by the hosting app as mentioned below. The ManageConnection widget is not setting any navigation appearance for any of its ViewControllers.
+UINavigationBar.appearance().tintColor = UIColor(red: 44/255, green: 160/255, blue: 28/255, alpha: 1)</p>
+<p>If the navigation bar appearance is not provided by hosting app, ManageConnection widget will show the default tint color for all the bar button items in the navigation bar.</p>
+<h3 id="uiconfig-and-exposed-properties">UIConfig and Exposed Properties:</h3>
+<p>Hosting app can customise the look and feel of the ManageConnection plugin. For this, the following config classes are exposed to customise the Navigation bar title color &amp; app fonts.
+* <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Sources/ManageConnectionColor.swift#L261">ManageConnectionColorConfig</a>
+* <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Sources/ManageConnectionFont.swift#L182">ManageConnectionFontConfig</a>
+For information on overriding the exposed properties for customization, see the <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios">fdx-manage-connection-ios</a> example.</p>
+<h4 id="initial-properties">Initial Properties</h4>
+<p>When loading the Manage Connection Widget, you will need to pass the following properties so the widget can fetch the user/realm connections connected to the product.
+Since the Manage connection widget is also integrated with the FDX Widget, your app needs to pass initial properties of FDX Widget to the Mange connection widget.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unSupportedProviders</td>
+<td>Dictionary<String, AnyObject></td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#unsupported-providers">Go to Unsupported section</a></td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>String</td>
+<td>true</td>
+<td>BrowserAuth API key used for all API calls to the fdx application service</td>
+</tr>
+<tr>
+<td>authId</td>
+<td>String</td>
+<td>false</td>
+<td>Provided by an offering if they want to tie analytics across repositories</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>String</td>
+<td>true</td>
+<td>The current country code (for use in location based search results)</td>
+</tr>
+<tr>
+<td>disableEscapeRoute</td>
+<td>Bool</td>
+<td>false</td>
+<td>Globally disables (hides) escape routes</td>
+</tr>
+<tr>
+<td>enableFeatures</td>
+<td>Array</td>
+<td>false</td>
+<td>Enable optional features <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-core-app/blob/master/src/enums/FeatureEnum.js">https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-core-app/blob/master/src/enums/FeatureEnum.js</a></td>
+</tr>
+<tr>
+<td>enableReCaptchaByPass</td>
+<td>Bool</td>
+<td>false</td>
+<td>If true, renders recaptcha in production mode</td>
+</tr>
+<tr>
+<td>disableReCaptchaByPass</td>
+<td>Bool</td>
+<td>false</td>
+<td>If true, renders recaptcha in test mode</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>String</td>
+<td>true</td>
+<td>(qal</td>
+</tr>
+<tr>
+<td>loadWidget</td>
+<td>String</td>
+<td>true</td>
+<td>ADD_CONNECTION (Only set ADD FI widgets)</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>String</td>
+<td>true</td>
+<td>A locale to swap out all tokens for that locale's language (e.g., fr-CA). Check out <a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#supported-locales">Supported Locales section</a></td>
+</tr>
+<tr>
+<td>oAuthCustomScheme</td>
+<td>String</td>
+<td>true</td>
+<td>set custom scheme for URL Schema</td>
+</tr>
+<tr>
+<td>oauthProductName</td>
+<td>String</td>
+<td>true</td>
+<td>set the oauth product name. Eg. QBO</td>
+</tr>
+<tr>
+<td>offeringId</td>
+<td>String</td>
+<td>true</td>
+<td>Offering ID that identifies you. You can also look this up for your project in the Services Portal</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>String</td>
+<td>true</td>
+<td>Set product name to be used for analytics and self-reporting</td>
+</tr>
+<tr>
+<td>productSupportUrl</td>
+<td>String</td>
+<td>false</td>
+<td>In certain error scenarios, provide a link to a separate support site to be popped open in another window. Defaults to <a href="https://www.intuit.com/support/">https://www.intuit.com/support/</a></td>
+</tr>
+<tr>
+<td>realmId</td>
+<td>String</td>
+<td>false</td>
+<td>ID to authenticate against realm context, if not using user context</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>String</td>
+<td>true</td>
+<td>Pick your look and feel - currently (intuit</td>
+</tr>
+<tr>
+<td>widgetOptions</td>
+<td>Dictionary<String, AnyObject></td>
+<td>true</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#widget-options">Go to Widget Options section</a></td>
+</tr>
+<tr>
+<td>showAddConnection</td>
+<td>Bool</td>
+<td>false</td>
+<td>If true, show add connection feature from the widget</td>
+</tr>
+<tr>
+<td>launchWithErroneousAccount</td>
+<td>Dictionary<String, AnyObject></td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#erroneousAccount-launch">Go to ManageAccounts Launch section</a></td>
+</tr>
+<tr>
+<td>showNewErrorExperience</td>
+<td>Bool</td>
+<td>false</td>
+<td>used to show the new Error exerience to the user. Default is set to true</td>
+</tr>
+<tr>
+<td>showUnlinkConnection</td>
+<td>Bool</td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#unlink-connection">Go to Unlink Connection section</a></td>
+</tr>
+<tr>
+<td>handleUnlinkConnection</td>
+<td>Bool</td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#unlink-connection">Go to Unlink Connection section</a></td>
+</tr>
+<tr>
+<td>showEnableDisableToggle</td>
+<td>Bool</td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#enabledisable-account">Go to Enable/Disable Account section</a></td>
+</tr>
+<tr>
+<td>handleEnableDisableAccount</td>
+<td>Bool</td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#enabledisable-account">Go to Enable/Disable Account section</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="widget-options">Widget Options</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entityTypes</td>
+<td>Array</td>
+<td>true</td>
+<td>set for getting prefered channel, account and transactions (Eg. SELF_EMPLOYED</td>
+</tr>
+<tr>
+<td>includeSuggestions</td>
+<td>Bool</td>
+<td>false</td>
+<td>includes suggesion in the top 8 providers</td>
+</tr>
+<tr>
+<td>isRealmContext</td>
+<td>Bool</td>
+<td>false</td>
+<td>set to true in case of realm user</td>
+</tr>
+<tr>
+<td>displayConnectionSuccess</td>
+<td>Bool</td>
+<td>false</td>
+<td>Determines if the successful connection animation displays in Add FI flows</td>
+</tr>
+<tr>
+<td>refreshConnecting</td>
+<td>Dictionary<String, AnyObject></td>
+<td>false</td>
+<td><a href="https://intuit-fdp.readme.io/docs/manage-connections-ios-integration#refreshconnecting">Go to Refresh connecting section</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="refreshconnecting">RefreshConnecting</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Req</strong></th>
+<th><strong>Description</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayConnectionSuccess</td>
+<td>Bool</td>
+<td>false</td>
+<td>Determines if the successful connection animation displays in Refresh,edit,fix flows</td>
+<td></td>
+</tr>
+<tr>
+<td>dateRange</td>
+<td>Dictionary<String, AnyObject></td>
+<td>false</td>
+<td>set to get transaction for the specified date range. Date should be in format yyyy-MM-dd’T’HH:mm:ss’Z’</td>
+<td>dataRange = { endDate: "2017-06-23T23:49:15Z", startDate:"2017-05-23T23:49:14Z"}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="erroneousaccount-launch">ErroneousAccount Launch</h3>
+<p>While invoking the ManageConnections widget, the hosting app can pass the <code>launchWithErroneousAccount</code> object to launch the Account Detail screen directly with the account generating the error. This object is a dictionary which is defined as follows:</p>
+<pre><code class="language-java">&quot;launchWithErroneousAccount&quot;: {
+&quot;accountIds&quot;: [&quot;urn:account:fdp::accountid:13ebd680-8eb1-11ea-91e3-12dc9a90a59c&quot;],
+&quot;errorCode&quot;: &quot;324&quot;
+}
+</code></pre>
+<p>The properties are defined below:
+| <strong>Property</strong> | <strong>Type</strong> | <strong>Required</strong> | <strong>Definition</strong> | 
+| --- | --- | --- | --- |
+| accountIds | Array | true | An array of accountIds for the erroneous account. | 
+| errorCode | String | false | This field is only for tracking purpose &amp; could be used in Analytics to track for which error flow the user came to ManageConnection widget. | </p>
+<h3 id="unlink-connection">Unlink Connection</h3>
+<p>While invoking ManageConnection widget, the hosting app can pass the showUnlinkConnection flag to show/hide the Unlink Connection feature in the widget. By default the flag is set to false i.e. the feature won't be shown until the flag is passed from the hosting app.
+Hosting apps can also override making API calls used in the implementation of Unlink Connection feature by passing handleUnlinkConnection flag. By default the flag is set to false i.e. ManageConnection widget will handle the API calls used for unlinking a connection.
+Please check <a href="https://docs.google.com/document/d/1hN3serxXp9sSDh2mLXw8RC-L3bBh80f33z1vRCGNcYk/edit?ts=5f4d7c9a#heading=h.hsf7eqk934ye">Manage Connection Architecture</a> for more details on the implementation of Unlink Connection.</p>
+<h3 id="enabledisable-account">Enable/Disable Account</h3>
+<p>While invoking ManageConnection widget, hosting app can pass showEnableDisableToggle flag to show/hide the switches in Account Detail screen as part of Enable/Disable Account feature in the widget. By default the flag is set to false i.e. the feature won't be supported until the flag is passed from hosting app.
+Hosting apps can also override making API calls used in the implementation of Enable/Disable Account feature by passing handleEnableDisableAccount flag. By default the flag is set to false i.e. ManageConnection widget will handle the API calls used for unlinking a connection.</p>
+<h3 id="supported-locales">Supported Locales</h3>
+<p>ManageConnection widget supports the following localizations.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>LocaleName</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>de</td>
+<td>German</td>
+</tr>
+<tr>
+<td>en</td>
+<td>English</td>
+</tr>
+<tr>
+<td>en-CA</td>
+<td>English(Canada)</td>
+</tr>
+<tr>
+<td>en-AE</td>
+<td>English(UAE)</td>
+</tr>
+<tr>
+<td>en-FR</td>
+<td>English(France)</td>
+</tr>
+<tr>
+<td>es-US</td>
+<td>Spanish(US)</td>
+</tr>
+<tr>
+<td>en-GB</td>
+<td>English(UK)</td>
+</tr>
+<tr>
+<td>es</td>
+<td>Spanish</td>
+</tr>
+<tr>
+<td>en-MX</td>
+<td>English(Mexico)</td>
+</tr>
+<tr>
+<td>it</td>
+<td>Italian</td>
+</tr>
+<tr>
+<td>en-BR</td>
+<td>English(Brazil)</td>
+</tr>
+<tr>
+<td>fr-CA</td>
+<td>French(Canada)</td>
+</tr>
+<tr>
+<td>en-SG</td>
+<td>English(Singapore)</td>
+</tr>
+<tr>
+<td>fr-FR</td>
+<td>Fench(France)</td>
+</tr>
+<tr>
+<td>en-MY</td>
+<td>English(Malaysia)</td>
+</tr>
+<tr>
+<td>en-IE</td>
+<td>English(Ireland)</td>
+</tr>
+<tr>
+<td>en-ZA</td>
+<td>English(South Africa)</td>
+</tr>
+<tr>
+<td>en-AU</td>
+<td>English(Australia)</td>
+</tr>
+<tr>
+<td>pt-BR</td>
+<td>Portuguese(Brazil)</td>
+</tr>
+<tr>
+<td>es-MX</td>
+<td>Spanish(Mexico)</td>
+</tr>
+<tr>
+<td>en-US</td>
+<td>English(US)</td>
+</tr>
+<tr>
+<td>fr</td>
+<td>French</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Indonesian</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>Dutch</td>
+</tr>
+<tr>
+<td>zh</td>
+<td>Chinese</td>
+</tr>
+<tr>
+<td>en-IN</td>
+<td>English(India)</td>
+</tr>
+</tbody>
+</table>
+<p>For more info on Localization process and support, see <a href="https://github.intuit.com/pages/UX-Infra/plugin-cli/#/plugin_development/LOCALIZATION">plugin-localization-support</a>.</p>
+<h3 id="unsupported-providers">Unsupported Providers</h3>
+<p>For passing UnsupportedProviders in initialProperties, the hosting app must convert the data for Unsupported Providers into the Structure format defined below, encode it into a JSONObject and then pass it to the widget as part of InitialProperties.
+UnsupportedProvider object: uses the following Structure format:</p>
+<pre><code class="language-java">public struct UnsupportedProvider: Codable {
+    var providerId: String?
+    var name: String?
+    var logoUrl: String?
+    var loginUrl: String?
+    var phoneNumber: String?
+    var homePageUrl: String?
+    var credentialSetId: String?
+    var lastModifiedTime: String?
+    var accounts: [UnsupportedAccount]?
+    var error: [UnsupportedProviderError]?
+
+public init(providerId: String? = nil, name: String? = nil, logoUrl: String? = nil, loginUrl: String? = nil, phoneNumber: String? = nil, homePageUrl: String? = nil, credentialSetId: String? = nil, lastModifiedTime: String? = nil, accounts: [UnsupportedAccount]? = nil, error: [UnsupportedProviderError]? = nil) {
+    self.providerId = providerId
+    self.name = name
+    self.logoUrl = logoUrl
+    self.loginUrl = loginUrl
+    self.phoneNumber = phoneNumber
+    self.homePageUrl = homePageUrl
+    self.credentialSetId = credentialSetId
+    self.lastModifiedTime = lastModifiedTime
+    self.accounts = accounts
+    self.error = error
+    }
+}
+</code></pre>
+<p>UnsupportedAccount and UnsupportedProviderError objects are defined in the ManageConnection Framework as well. Please refer to the <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Sources/Model/UnsupportedProvider.swift">UnsupportedProvider file</a> for more details on these objects' definitions.
+The hosting app can create these structures and pass the JSON object to the widget. Please refer to the <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Example/ManageConnectionFrameWork/ManageConnectionViewController.swift">ManageConnectionViewController file</a> for details on how to create these structure objects.
+The widget will deserialize the JSONObject passed in intialProps &amp; decode it into array of UnsupportedProvider structure to render the UI. Widget will convert the UnsupportedProvider structure object into the dictionary i.e. [String: AnyObject] format while passing the data back to the hosting app using Sandbox widgetEventDelegate.</p>
+<h2 id="analytics">Analytics</h2>
+<p>The Manage Connection widget emits following analytics events. Please refer <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/master/Sources/Constant.swift#L69">here</a> for their definition codebase. The hosting app should implement the Sandbox.AnalyticsDelegate.trackEvent() protocol to capture these events.
+The ManageConnection widget adds following default properties in all the analytics events.
+| <strong>Default Properties</strong> | 
+| --- |
+| widgetName | 
+| pluginSourceID | 
+| pluginVersion | 
+| environment | </p>
+<p>Please see the <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-ios/blob/f847260a2fea912abc441df3d09892a1dd9c13a1/Sources/ManageConnectionAnalyticsDelegate.swift#L47">MC Default Props</a> for implementation details.</p>
+<table>
+<thead>
+<tr>
+<th><strong>EventName</strong></th>
+<th><strong>Additional Properties</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onWidgetFlowLoadedEvent</td>
+<td>[]</td>
+<td>When widget is loaded</td>
+</tr>
+<tr>
+<td>onWidgetFlowUnloadedEvent</td>
+<td>[]</td>
+<td>When widget is unloaded</td>
+</tr>
+<tr>
+<td>onWidgetDisplayedEvent</td>
+<td>['resultCount']</td>
+<td>When bank conections on widget are displayed</td>
+</tr>
+<tr>
+<td>onSelectProviderEvent</td>
+<td>['providerId', 'providerName']</td>
+<td>When a provider is selected from bank connections list</td>
+</tr>
+<tr>
+<td>onErrorClickEvent</td>
+<td>['providerId', 'providerName', 'credentialSetId, 'errorCode','errorType', 'authenticationType']</td>
+<td>When CTA on the Error is tapped</td>
+</tr>
+<tr>
+<td>onAddBankRequestEvent</td>
+<td>[]</td>
+<td>When AddConnection flow is invoked</td>
+</tr>
+<tr>
+<td>onTellMeMoreButtonClicked</td>
+<td>[]</td>
+<td>When Tell me more on the error is tapped</td>
+</tr>
+<tr>
+<td>onCancelButtonClicked</td>
+<td>[]</td>
+<td>When cancel button is tapped</td>
+</tr>
+<tr>
+<td>onBack</td>
+<td>[]</td>
+<td>When we tap on Back button &amp; ManageAccounts screen is unloaded to come back to MangeBanks Screen</td>
+</tr>
+<tr>
+<td>onAccountsDisplayedEvent</td>
+<td>['providerId', 'providerName', 'totalAccounts']</td>
+<td>When ManageAccounts screen is loaded</td>
+</tr>
+<tr>
+<td>onDismissButtonClickedEvent</td>
+<td>[]</td>
+<td>When Dismiss or Dismiss all button is tapped on 'ManageAccounts' screen to dismiss the errors shown</td>
+</tr>
+<tr>
+<td>onRefreshButtonClickedEvent</td>
+<td>['providerId', 'providerName', 'credentialSetId']</td>
+<td>When refresh button is tapped in ManageAccounts screen</td>
+</tr>
+<tr>
+<td>onEditSignInButtonClickedEvent</td>
+<td>['providerId', 'providerName', 'credentialSetId']</td>
+<td>When EditConnection flow is invoked</td>
+</tr>
+<tr>
+<td>onErroneousAccountLaunchedEvent</td>
+<td>['accountId', 'errorCode']</td>
+<td>When ManageAccounts screen is launched with the erroeneous account</td>
+</tr>
+<tr>
+<td>onErroneousAccountNotFoundEvent</td>
+<td>['accountId', 'errorCode']</td>
+<td>When when accountIds passed by hosting app were not found in FDP</td>
+</tr>
+<tr>
+<td>onBankConnectionsZeroStateEvent</td>
+<td>['resultCount']</td>
+<td>When Aggregated/search API returns zero bank connections</td>
+</tr>
+<tr>
+<td>onReviewMoreClicked</td>
+<td>[]</td>
+<td>When review more is tapped for an error showing in AccountList screen</td>
+</tr>
+<tr>
+<td>onUnlinkConnectionButtonClickedEvent</td>
+<td>['providerId', 'providerName', 'credentialSetId']</td>
+<td>When "Unlink now" button is tapped to unlink the connection</td>
+</tr>
+<tr>
+<td>onEnableAccountToggleEvent</td>
+<td>['accountId', 'providerId', 'providerName']</td>
+<td>When account switch is toggled to ON to link an account to the product</td>
+</tr>
+<tr>
+<td>onDisableAccountToggleEvent</td>
+<td>['accountId', 'providerId', 'providerName']</td>
+<td>When account switch is toggled to OFF to unlink an account from the product</td>
+</tr>
+</tbody>
+</table>
+<p>There are a few custom properties used exclusively for "ManageConnections". Please find these custom properties and their mapping used in analytics events <a href="https://wiki.intuit.com/display/FDP/FDP+Widgets+Analytics+-+dummy+field+mapping">here</a>.</p>
+<h3 id="widget-event-delegate">Widget Event Delegate</h3>
+<p>The Manage Connection widget provides the following widget events delegate. The hosting app should implement the Sandbox.WidgetEventDelegate.handleEvent() protocol to capture these events.</p>
+<h4 id="manageconnection-events">ManageConnection Events</h4>
+<p>ManageConnection widget fires below events to the hosting app:
+* AccountReconciliationErrorClickEvent [Special Error handling for 324]
+In case of FDP-324, if authorizationMethod is SCREEN_SCRAPING, then ManageConnection widget will pass the control back to the hosting app with an event AccountReconciliationErrorClickEvent using Sandbox widgetEventDelegate to handle the error.
+* WidgetEventOnEscapeRouteNotification:
+If escapeRouteText key is present in InitialProps, ManageConnection widget will pass the control back to the hosting app using WidgetEventOnEscapeRouteNotification event to handle escape route while tapping on Escape button in the loading experience.</p>
+<h3 id="fdp-widget-events">FDP Widget Events</h3>
+<p>ManageConnection widget adds below context before passing events, received from FDP widget, over to the hosting app:</p>
+<pre><code class="language-java">eventData[&quot;widgetFlowContext&quot;] = [&quot;loadWidget&quot;: loadWidget, &quot;errorCode&quot;: errorCode] as AnyObject
+
+loadWidget:  FDP widget flow to load from ManageConnection widget. For eg. `ADD_CONNECTION`
+errorCode:   Errorcode the FDP flow was launched for. For eg. `fix-it flow`  [Error code 103]
+</code></pre>
+<p>The following are the FDP widget events:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Event</strong></th>
+<th><strong>CallbackData</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onSelectProvider</td>
+<td>['provider']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCRMSuccess</td>
+<td>['data', 'response']</td>
+<td></td>
+</tr>
+<tr>
+<td>onMFA</td>
+<td>['results']</td>
+<td></td>
+</tr>
+<tr>
+<td>onConnectSuccess</td>
+<td>['results', 'hash']</td>
+<td>Used to notify the success of AddConnection &amp; RefreshConnection events</td>
+</tr>
+<tr>
+<td>onCorrelationIdReceived</td>
+<td>['correlationId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onConnectionStatusReceived</td>
+<td>['data']</td>
+<td></td>
+</tr>
+<tr>
+<td>onAuthProviderLoadSuccess</td>
+<td>['results']</td>
+<td></td>
+</tr>
+<tr>
+<td>onGetSupportButtonPressed</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onAuthProviderSubmit</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onAddProviderRequested</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onOauthCancel</td>
+<td>['data']</td>
+<td></td>
+</tr>
+<tr>
+<td>onOauthSuccess</td>
+<td>['data']</td>
+<td></td>
+</tr>
+<tr>
+<td>onOauthStart</td>
+<td>['flowId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onAccountsSelected</td>
+<td>['accountsList']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafStart</td>
+<td>['initialized']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafSubmitSuccess</td>
+<td>['response', 'provider', 'account']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafDone</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>activateCafSuccess</td>
+<td>['response', 'gapDates']</td>
+<td></td>
+</tr>
+<tr>
+<td>activateCafFailure</td>
+<td>['error']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafUpload</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafWait</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onProviderUnsupported</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onDone</td>
+<td>['flowId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onOfflineBill</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onFinished</td>
+<td>['flowId', 'widgetName']</td>
+<td></td>
+</tr>
+<tr>
+<td>addConnectionConsented</td>
+<td>['flowId', 'providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onConsentStatusUpdateSuccess</td>
+<td>['flowId', 'response', 'consentStatus']</td>
+<td></td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>['flowId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onHelpLinkPressed</td>
+<td>['flowId', 'linkDetail', 'providerId']</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="widget-notification-observers">Widget Notification Observers</h3>
+<p>Manage Connection widget observes following notifications:</p>
+<ul>
+<li>
+<p>WidgetEventDismissFDPWidgetNotification</p>
+<ul>
+<li>Used to dismiss the FDP Native widget. For example, use this notification to close the FDP Native widget and show product specific Account selection widget.</li>
+</ul>
+</li>
+<li>
+<p>WidgetRefreshConnectionSuccessNotification</p>
+<ul>
+<li>Used to refresh the connection in Manage connection widget. For example, after mapping the account to the product, use this notification to refresh the manage connection widget in background</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../android-integration-manage-connections/" class="btn btn-neutral float-left" title="Android Integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../credit-karma-use-case/" class="btn btn-neutral float-right" title="Web App - Credit Karma Use Case">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../android-integration-manage-connections/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../credit-karma-use-case/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

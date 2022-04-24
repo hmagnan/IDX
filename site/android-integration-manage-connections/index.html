@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/android-integration-manage-connections/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Android Integration - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Android Integration";
+        var mkdocs_page_input_path = "android-integration-manage-connections.md";
+        var mkdocs_page_url = "/android-integration-manage-connections/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web-integration-manage-connections/">Web Integration</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Android Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#initial-properties">Initial Properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#properties-detail">Properties Detail</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#widget-options">Widget Options</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#refreshconnecting">RefreshConnecting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-the-user-experience-in-an-error-state">Managing the User Experience in an Error State</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unsupported-providers">Unsupported Providers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#widget-event-delegate">Widget Event Delegate</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#manage-connection-events">Manage Connection Events</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fdp-widget-event">FDP Widget Event</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mapping-a-web-page-url-to-an-error-code">Mapping a web page url to an error code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ui-configuration">UI Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#navigation-bar-code-samples">Navigation Bar Code Samples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-the-font-family">Configure the Font Family</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configuring-the-widget-theme-color">Configuring the Widget Theme color</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#analytics">Analytics</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#supported-locales">Supported Locales</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Android Integration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="android-integration-for-manage-connection">Android Integration for Manage Connection</h1>
+<p>Manage Connection Widget is an application framework that allows the user to see all their existing connections. Users will also be able to manage their connections, view notifications, or fix or edit credentials.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>Add this in your root build.gradle file (not your module build.gradle file):</p>
+<pre><code class="language-java">allprojects {
+    repositories {
+        maven { url 'http://nexus.intuit.net/nexus/content/repositories/CTO.ANDROID.Intuit-Releases' }
+        maven { url 'http://nexus.intuit.net/nexus/content/repositories/CTO.ANDROID.Intuit-Snapshots' }
+        maven { url &quot;https://jitpack.io&quot; }
+    }
+}
+</code></pre>
+<p>The manage Connections widget is build using com.intuit.appfabric.appshell:appshell-core-android:4.12.0.
+The latest version of Manage connections is listed <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/releases">here</a>.
+Then, add the library to your module build.gradle</p>
+<pre><code class="language-java">    dependencies {
+    ...
+    implementation 'com.intuit.appfabric.appshell:appshell-core-android:4.12.0', {
+    ...
+    }
+implementation 'com.intuit.fdp.android:manage-connections:1.8.0'
+}
+</code></pre>
+<p>The Manage Connection SDK is implemented as an Appshell widget. It should be initialized through the Mobile<a href="https://github.intuit.com/fabric-app-shells/mobile-shell-android"> AppShell framework</a>.</p>
+<ol>
+<li>
+<p>Create ManageConnections to load the Manage Connection widget and get activity intent and configuration.
+val intent = Intent(context, ManageConnectionActivity::class.java)
+intent.putExtra(com.intuit.manageconnectionsdk.common.Constants.INPUT_PROPS_BUNDLE_KEY, getInitialProps())
+startActivity(intent)
+For an example, see <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/MCDemoApp/src/main/java/com/intuit/manageconnectiondemo/LoadManageConnectionWidgetUseCase.kt">fdx-manage-connection-android</a>.</p>
+</li>
+<li>
+<p>Start Manage Connection activity by the intent returned from the widget. startActivity(manageConnectionLaunchIntent)
+This requires the hosting app to implement the Sandbox.authenticationDelegate to provide an OAuth2 token. The OAuth2 token is used by the widget to make requests to the backend. An example can be found <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/MCDemoApp/src/main/java/com/intuit/manageconnectiondemo/AuthenticationDelegate.kt">here</a>.</p>
+</li>
+</ol>
+<h3 id="initial-properties">Initial Properties</h3>
+<p>When loading the Manage Connection widget, the following properties must be passed: An example could be found <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/MCDemoApp/src/main/assets/ManageConnectionInitialProps.json">here</a>.</p>
+<h4 id="properties-detail"><strong>Properties Detail</strong></h4>
+<p>Since the Manage Connection widget is integrated with the IDX widget, your app needs to pass the initial properties of the IDX widget to the Manage Connection widget as well.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unSupportedProviders</td>
+<td>Map<String, Any></td>
+<td>For more information, see <a href="#heading=h.1748wcsbccww">Unsupported Providers</a>.</td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>String</td>
+<td>BrowserAuth API key used for all API calls to the fdx application service</td>
+</tr>
+<tr>
+<td>authId</td>
+<td>String</td>
+<td>Provided by an offering if they want to tie analytics across repositories</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>String</td>
+<td>The current country code (for use in location based search results)</td>
+</tr>
+<tr>
+<td>disableEscapeRoute</td>
+<td>Bool</td>
+<td>Globally disables (hides) escape routes</td>
+</tr>
+<tr>
+<td>enableFeatures</td>
+<td>Array</td>
+<td>To enable optional features, see <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-core-app/blob/master/src/enums/FeatureEnum.js">https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-core-app/blob/master/src/enums/FeatureEnum.js</a></td>
+</tr>
+<tr>
+<td>enableReCaptchaByPass</td>
+<td>Bool</td>
+<td>If true, renders recaptcha in production mode</td>
+</tr>
+<tr>
+<td>disableReCaptchaByPass</td>
+<td>Bool</td>
+<td>If true, renders the recaptcha in test mode</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>String</td>
+<td>(qal</td>
+</tr>
+<tr>
+<td>loadWidget</td>
+<td>String</td>
+<td>ADD_CONNECTION (Only set ADD FI widgets)</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>String</td>
+<td>A locale to swap out all tokens for that locale's language (e.g., fr-CA). For more information, see <a href="#heading=h.7xvpzj7q20jr">Supported Locales</a>.</td>
+</tr>
+<tr>
+<td>oAuthCustomScheme</td>
+<td>String</td>
+<td>set custom scheme for URL Schema</td>
+</tr>
+<tr>
+<td>oauthProductName</td>
+<td>String</td>
+<td>set the oauth product name. Eg. QBO</td>
+</tr>
+<tr>
+<td>offeringId</td>
+<td>String</td>
+<td>Offering ID that identifies you. You can also look this up for your project in the Services Portal</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>String</td>
+<td>Set product name to be used for analytics and self-reporting</td>
+</tr>
+<tr>
+<td>productSupportUrl</td>
+<td>String</td>
+<td>In certain error scenarios, provide a link to a separate support site that is opened in another window. Defaults to <a href="https://www.intuit.com/support/">https://www.intuit.com/support/</a></td>
+</tr>
+<tr>
+<td>realmId</td>
+<td>String</td>
+<td>ID to authenticate against realm context, if not using user context</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>String</td>
+<td>Pick your look and feel - currently (intuit</td>
+</tr>
+<tr>
+<td>widgetOptions</td>
+<td>Map<String, AnyObject></td>
+<td>For more information see, <a href="#heading=h.z2j22jyuz3np">Widget Options</a></td>
+</tr>
+<tr>
+<td>authId</td>
+<td>String</td>
+<td>Provided by an offering if they want to tie analytics across repositories</td>
+</tr>
+<tr>
+<td>is7216</td>
+<td>Boolean</td>
+<td>is7216 enabled?</td>
+</tr>
+<tr>
+<td>hideAddConnection</td>
+<td>Bool</td>
+<td>If true, hide add connection feature from the widget</td>
+</tr>
+<tr>
+<td>launchWithErroneousAccount</td>
+<td>[accountId..]</td>
+<td>List of account id[s] to open directly rather than MC home page listing all connections</td>
+</tr>
+<tr>
+<td>showEnableDisableToggle</td>
+<td>Boolean</td>
+<td>Whether to show a toggle button to disable/enable a account in a connection</td>
+</tr>
+<tr>
+<td>handleEnableDisableAccount</td>
+<td>Boolean</td>
+<td>If user opts to toggle a account status, this determines whether the offering handles the event or the widget handle the event</td>
+</tr>
+<tr>
+<td>showUnlinkConnection</td>
+<td>Boolean</td>
+<td>Whether to show a option to unlink the connection</td>
+</tr>
+<tr>
+<td>handleUnlinkConnection</td>
+<td>Boolean</td>
+<td>If user opts to unlink a connection, then whether offering will handle the event or widget will handle it with default flow</td>
+</tr>
+<tr>
+<td>handleUpdateAVM</td>
+<td>Boolean</td>
+<td>Whether offering will handle the AVM calls itself or widget will handle it with default flow</td>
+</tr>
+</tbody>
+</table>
+<h4 id="widget-options"><strong>Widget Options</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entityTypes</td>
+<td>Array</td>
+<td>set for getting prefered channel, account and transactions (Eg. SELF_EMPLOYED</td>
+</tr>
+<tr>
+<td>includeSuggestions</td>
+<td>Bool</td>
+<td>includes suggesion in the top 8 providers</td>
+</tr>
+<tr>
+<td>isRealmContext</td>
+<td>Bool</td>
+<td>set to true in case of realm user</td>
+</tr>
+<tr>
+<td>displayConnectionSuccess</td>
+<td>Bool</td>
+<td>Determines if the successful connection animation displays in Add FI flows</td>
+</tr>
+<tr>
+<td>refreshConnecting</td>
+<td>Map<String, Any></td>
+<td>For more information see<a href="#heading=h.hp1m8guyyb30"> RefreshConnecting</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="refreshconnecting"><strong>RefreshConnecting</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayConnectionSuccess</td>
+<td>Bool</td>
+<td>Determines if the successful connection animation displays in Refresh,edit,fix flows</td>
+<td></td>
+</tr>
+<tr>
+<td>dateRange</td>
+<td>Map<String, Any></td>
+<td>set to get transaction for the specified date range. Date should be in format yyyy-MM-dd’T’HH:mm:ss’Z’</td>
+<td>dataRange = { endDate: "2017-06-23T23:49:15Z", startDate:"2017-05-23T23:49:14Z"}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="managing-the-user-experience-in-an-error-state">Managing the User Experience in an Error State</h3>
+<p>Instead of launching the Manage Connections widget for displaying the list of ALL connections, a deep link can be configured using initial props for a particular connection. This will allow us to direct users to a particular connection when we detect that their account is in an error state.<br></p>
+<pre><code class="language-java">val idList = [&quot;urn:account:fdp::accountid:ee2b1920&quot;, &quot;urn:account:fdp::accountid:ee2b1921&quot;]
+val accountLauncher = MCAccountLauncher(accountIds = idList, errorCode = $ErrorCode)
+    props.put(
+        &quot;launchWithErroneousAccount&quot;,
+    accountLauncher
+)
+</code></pre>
+<h3 id="unsupported-providers">Unsupported Providers</h3>
+<p>The Manage Connection widget allows you to customize your own providers and return events to handle. For a list of  widget events, see <a href="#heading=h.bnhesfukcyri">Manage Connection Events</a>.
+To pass in your own providers, you need to create a Json format string based on UnsupportedProvider class and assign it to "unsupportedProviders" property in initial props file. An example could be found <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/MCDemoApp/src/main/assets/ManageConnectionInitialProps.json">here</a>.
+Here is the UnsupportedProvider class extended from Connection class, please use the @SerializedName annotation</p>
+<pre><code class="language-java">name as your Json key.
+class UnsupportedProvider() : Connection() {
+@SerializedName(&quot;accounts&quot;)
+override var accountList: List&lt;UnsupportedAccount&gt;? = null
+
+@SerializedName(&quot;error&quot;)
+override var errorList: List&lt;UnsupportedProviderError&gt;? = null
+
+...
+}
+
+abstract class Connection : BaseSchema() {
+@SerializedName(&quot;providerId&quot;)
+val providerID: String? = null
+
+@SerializedName(&quot;name&quot;)
+val name: String? = null
+@SerializedName(&quot;logoUrl&quot;)
+val logoUrl: String? = null
+
+@SerializedName(&quot;loginUrl&quot;)
+val loginURL: String? = null
+
+@SerializedName(&quot;phoneNumber&quot;)
+val phoneNumber: String? = null
+
+@SerializedName(&quot;homePageUrl&quot;)
+val homePageURL: String? = null
+
+@SerializedName(&quot;credentialSetId&quot;)
+val credentialSetID: String? = null
+
+@SerializedName(&quot;lastModifiedTime&quot;)
+val lastModifiedTime: String? = null
+...
+}
+</code></pre>
+<p>Except to UnsupportedProvider, there are UnsupportedAccount and UnsupportedProviderError classes. All classes are defined in <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/ManageConnectionSDK/src/main/java/com/intuit/manageconnectionsdk/schema/UnsupportedConnectionSchema.kt">UnsupportedConnectionSchema.kt</a> and <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/ManageConnectionSDK/src/main/java/com/intuit/manageconnectionsdk/schema/ConnectionSchema.kt">ConnectionSchema.kt</a>.</p>
+<h3 id="widget-event-delegate"><strong>Widget Event Delegate</strong></h3>
+<p>The Manage Connection widget emits its own events and forward FDP widget events to hosted app. The hosting app should implement the <code>Sandbox.WidgetEventDelegate.handleEvent()</code> to capture these events.</p>
+<pre><code class="language-java">class WidgetEventDelegate() : IWidgetEventDelegate {
+
+    override fun handleEvent(
+    eventName: String?,
+    eventData: MutableMap&lt;String, Any&gt;?,
+    context: MutableMap&lt;String, Any&gt;?
+    ) {
+        context?.let {
+            (it.get(&quot;widgetId&quot;) as? String)?.let { widgetID -&gt;
+                if (widgetID == com.intuit.manageconnectionsdk.common.Constants.FDP_WIDGET_ID) {
+                // FDP widget event
+                } else if (widgetID == com.intuit.manageconnectionsdk.common.Constants.MANAGE_CONNECTION_WIDGET_ID) {
+                    // Manage connection widget event
+                }
+            }
+        }
+    }   
+}
+</code></pre>
+<p>An example is <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/MCDemoApp/src/main/java/com/intuit/manageconnectiondemo/WidgetEventDelegate.kt">here</a>.</p>
+<h4 id="manage-connection-events"><strong>Manage Connection Events</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Event</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AccountReconciliationErrorClickEvent</td>
+<td>[Special Error handling for 324] It's triggered when it is error 324 and the authorizationMethod is SCREEN_SCRAPING</td>
+</tr>
+<tr>
+<td>WidgetEventOnEscapeRouteNotification</td>
+<td>It's triggered when escapeRouteText key is present in InitialProps and users tap on Escape button in the loading experience.</td>
+</tr>
+<tr>
+<td>OnErrorUnSupportedProvider</td>
+<td>It's triggered when UnSupportedProvider's error handling action button is clicked.</td>
+</tr>
+<tr>
+<td>UnsupportedProviderViewClickEvent</td>
+<td>It's triggered when an UnSupportedProvider is clicked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fdp-widget-event"><strong>FDP Widget Event</strong></h4>
+<p>The ManageConnection widget adds a widgetFlowContext property to context before forwarding events, received from the FDP widge to the hosting app.</p>
+<pre><code>class WidgetEventDelegate() : IWidgetEventDelegate {
+override fun handleEvent(
+eventName: String?,
+eventData: MutableMap&lt;String, Any&gt;?,
+context: MutableMap&lt;String, Any&gt;?
+) {
+context?.let {
+(it.get(&quot;widgetId&quot;) as? String)?.let { widgetID -&gt;
+if (widgetID == com.intuit.manageconnectionsdk.common.Constants.FDP_WIDGET_ID) {
+val widgetFlowContext = context.get(&quot;widgetFlowContext&quot;) as? FDPWidgetContext
+
+// The FDP flow was launched for. For eg. `fix-it flow`  [Error code 103]
+val errorCode = widgetFlowContext?.errorCode
+
+// FDP widget flow to load from ManageConnection widget. For example, &quot;ADD_CONNECTION&quot;
+val loadWidget = widgetFlowContext?.loadWidget
+     }
+    }
+   }
+  }
+}
+</code></pre>
+<p>The following are the FDP widget events:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Event</strong></th>
+<th><strong>CallbackData</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onSelectProvider</td>
+<td>['provider']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCRMSuccess</td>
+<td>['data', 'response']</td>
+<td></td>
+</tr>
+<tr>
+<td>onMFA</td>
+<td>['results']</td>
+<td></td>
+</tr>
+<tr>
+<td>onConnectSuccess</td>
+<td>['results', 'hash']</td>
+<td>Used to notify the success of AddConnection &amp; RefreshConnection events</td>
+</tr>
+<tr>
+<td>onCorrelationIdReceived</td>
+<td>['correlationId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onConnectionStatusReceived</td>
+<td>['data']</td>
+<td></td>
+</tr>
+<tr>
+<td>onAuthProviderLoadSuccess</td>
+<td>['results']</td>
+<td></td>
+</tr>
+<tr>
+<td>onGetSupportButtonPressed</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onAuthProviderSubmit</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onAddProviderRequested</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onOauthCancel</td>
+<td>['data']</td>
+<td></td>
+</tr>
+<tr>
+<td>onOauthSuccess</td>
+<td>['data']</td>
+<td></td>
+</tr>
+<tr>
+<td>onOauthStart</td>
+<td>['flowId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onAccountsSelected</td>
+<td>['accountsList']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafStart</td>
+<td>['initialized']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafSubmitSuccess</td>
+<td>['response', 'provider', 'account']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafDone</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>activateCafSuccess</td>
+<td>['response', 'gapDates']</td>
+<td></td>
+</tr>
+<tr>
+<td>activateCafFailure</td>
+<td>['error']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafUpload</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onCafWait</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onProviderUnsupported</td>
+<td>['providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onDone</td>
+<td>['flowId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onOfflineBill</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>onFinished</td>
+<td>['flowId', 'widgetName']</td>
+<td></td>
+</tr>
+<tr>
+<td>addConnectionConsented</td>
+<td>['flowId', 'providerId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onConsentStatusUpdateSuccess</td>
+<td>['flowId', 'response', 'consentStatus']</td>
+<td></td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>['flowId']</td>
+<td></td>
+</tr>
+<tr>
+<td>onHelpLinkPressed</td>
+<td>['flowId', 'linkDetail', 'providerId']</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mapping-a-web-page-url-to-an-error-code"><strong>Mapping a web page url to an error code</strong></h3>
+<p>You can bind a web page url to an error code. The Manage Connection SDK displays a button with the url and directs users to the web page when the button is clicked.
+To pass the mapping, implement <code>Sandbox.appDataDelegate</code>.</p>
+<pre><code class="language-java">class AppDataDelegate : IAppDataDelegate {
+    override fun getData(
+        data: MutableMap&lt;String, Any&gt;?,
+        context: MutableMap&lt;String, Any&gt;?,
+        callback: ICompletionCallback&lt;Any&gt;?
+    ) {
+        val topic = data?.get(Constants.GetDataKey.Topic) as String
+        if (topic == Constants.GetDataKey.GetSupportLinkForBankError) {
+            val supportLinks =
+                mapOf(&quot;108&quot; to &quot;https://quickbooks.intuit.com/learn-support/en-us/sync-bank-feeds/fix-banking-error-108/00/369802&quot;)
+        callback?.onSuccess(supportLinks)
+        }
+    }
+}
+</code></pre>
+<p>See <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/MCDemoApp/src/main/java/com/intuit/manageconnectiondemo/AppDataDelegate.kt">fdx-manage-connection-android </a>for an example.</p>
+<h4 id="ui-configuration">UI Configuration</h4>
+<!--Get config file -->
+<p>The hosting app can use ManageConnectionConfig to customize the look and feel of the ManageConnection widget. When you load the ManageConnection widget, you get ManageConnectionConfig by default.</p>
+<pre><code class="language-java">    manageConnectionWidget?.load(activity, initialPops, null, object :
+        ICompletionCallback&lt;Any&gt; {
+        override fun onSuccess(obj: Any?) {
+            (obj as? Map&lt;String, Any?&gt;).let {
+                //Get Manage Connection UI Config
+                val manageConnectionConfig = it?.get(com.intuit.manageconnectionsdk.common.Constants.WidgetPropsKeys.manageConnectionConfig) as? ManageConnectionConfig
+val uiConfig = manageConnectionConfig?.UIConfig
+        }
+    }
+
+    override fun onFailure(errorObject: AppShellError?) {
+    ...
+    }
+})
+</code></pre>
+<p>Similarly, you could get it from ManageConnectionInitializer after the Manage Connection widget is loaded.</p>
+<pre><code class="language-java">// It works only after Manage connection widget is loaded
+val manageConnectionConfig = ManageConnectionInitializer.getConfig()
+val uiConfig = manageConnectionConfig?.UIConfig
+</code></pre>
+<h4 id="navigation-bar-code-samples">Navigation Bar Code Samples</h4>
+<p>The following code samples illustrate how to to set up the Navigaton Bar.</p>
+<pre><code class="language-java">val uiConfig = manageConnectionConfig?.UIConfig
+
+// Configure navigatioinBar title color
+
+// argb code
+uiConfig?.navigationBar?.titleStringColor = Color.parseColor(&quot;#8066FFFF&quot;)
+// rgb code
+uiConfig?.navigationBar?.titleStringColor = Color.parseColor(&quot;#66FFFF&quot;)
+// resource id
+uiConfig?.navigationBar?.titleStringColor = R.color.colorAccent
+// Color color
+uiConfig?.navigationBar?.titleStringColor = Color.BLACK
+
+// Configure navigatioinBar background
+
+// resource id
+uiConfig?.navigationBar?.backgroundResId = R.color.colorAccent
+// resource id
+uiConfig?.navigationBar?.backgroundResId = R.drawable.common_google_signin_btn_icon_dark
+// Color color
+uiConfig?.navigationBar?.backgroundResId = Color.WHITE
+</code></pre>
+<h4 id="configure-the-font-family">Configure the Font Family</h4>
+<p>You can configure the font in the Manage Connection widget. All text in the widgets are one of three levels, h1, h2, and h3, with the default value of sans-serif-medium, sans-serif and sans-serif-light. You can replace them as follows:</p>
+<pre><code class="language-java">// Config font typeface
+uiConfig?.font?.h1TextFontTypeface = Typeface.create(&quot;sans-serif-medium&quot;, Typeface.NORMAL)
+uiConfig?.font?.h2TextFontTypeface = Typeface.create(&quot;sans-serif&quot;, Typeface.NORMAL)
+uiConfig?.font?.h3TextFontTypeface = Typeface.create(&quot;sans-serif-light&quot;, Typeface.NORMAL)
+</code></pre>
+<h4 id="configuring-the-widget-theme-color">Configuring the Widget Theme color</h4>
+<p>By default, the button and background colors in the widget are set to the style of "Green".
+The theme can be changed as follows:</p>
+<pre><code class="language-java">uiConfig?.theme?.themeColor = Color.parseColor(&quot;#2ca01c&quot;)
+</code></pre>
+<h3 id="analytics">Analytics</h3>
+<p>The Manage Connection widget delivers following analytics events. The hosting app should implement the <code>Sandbox.AnalyticsDelegate.trackEvent()</code> to capture these events.</p>
+<pre><code class="language-java">class AnalyticsDelegate() : IAnalyticsDelegate {
+override fun trackEvent(
+eventName: String?,
+eventData: MutableMap&lt;String, Any&gt;?,
+context: MutableMap&lt;String, Any&gt;?
+) {
+// Connect to your own Analytics library
+}
+
+override fun trackEvent(
+eventName: String?,
+eventData: MutableMap&lt;String, Any&gt;?
+) {
+// Connect to your own Analytics library
+}
+
+override fun trackEvent(eventName: String?) {
+// Connect to your own Analytics library
+}
+}
+</code></pre>
+<p>The following events are available.</p>
+<table>
+<thead>
+<tr>
+<th><strong>EventName</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onWidgetFlowLoadedEvent</td>
+<td>When widget is loaded</td>
+</tr>
+<tr>
+<td>onWidgetFlowUnloadedEvent</td>
+<td>When widget is unloaded</td>
+</tr>
+<tr>
+<td>onWidgetDisplayedEvent</td>
+<td>When bank connections on widget are displayed</td>
+</tr>
+<tr>
+<td>onSelectProviderEvent</td>
+<td>When a provider is selected from bank connections list</td>
+</tr>
+<tr>
+<td>onErrorClickEvent</td>
+<td>When CTA on the Error is tapped</td>
+</tr>
+<tr>
+<td>onAddBankRequestEvent</td>
+<td>When AddConnection flow is invoked</td>
+</tr>
+<tr>
+<td>onCancelButtonClicked</td>
+<td>When cancel button is tapped</td>
+</tr>
+<tr>
+<td>onBack</td>
+<td>When we tap on Back button &amp; ManageAccounts screen is unloaded to come back to MangeBanks Screen</td>
+</tr>
+<tr>
+<td>onAccountsDisplayedEvent</td>
+<td>When ManageAccounts screen is loaded</td>
+</tr>
+<tr>
+<td>onDismissButtonClickedEvent</td>
+<td>When Dismiss or Dismiss all button is tapped on 'ManageAccounts' screen to dismiss the errors shown</td>
+</tr>
+<tr>
+<td>onRefreshButtonClickedEvent</td>
+<td>When refresh button is tapped in ManageAccounts screen</td>
+</tr>
+<tr>
+<td>onEditSignInButtonClickedEvent</td>
+<td>When EditConnection flow is invoked</td>
+</tr>
+<tr>
+<td>onErroneousAccountNotFoundEvent</td>
+<td>When fail to launch connection detail by account id</td>
+</tr>
+<tr>
+<td>onEnableAccountToggleEvent</td>
+<td>When account toggle is clicked to enable</td>
+</tr>
+<tr>
+<td>onDisableAccountToggleEvent</td>
+<td>When account toggle is clicked to disable</td>
+</tr>
+<tr>
+<td>onUnlinkConnectionButtonClickedEvent</td>
+<td>When unlink connection confirmation button is clicked</td>
+</tr>
+</tbody>
+</table>
+<p>Detail of Analytics implementation can be found <a href="https://github.intuit.com/CTO-Dev-FDS-FDX/fdx-manage-connection-android/blob/master/ManageConnectionSDK/src/main/java/com/intuit/manageconnectionsdk/common/AnalyticsHelper.kt">here</a></p>
+<h4 id="supported-locales">Supported Locales</h4>
+<p>ManageConnection widget supports following localizations.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>LocaleName</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>en</td>
+<td>English</td>
+</tr>
+<tr>
+<td>en-AE</td>
+<td>English(UAE)</td>
+</tr>
+<tr>
+<td>en-AU</td>
+<td>English(Australia)</td>
+</tr>
+<tr>
+<td>en-BR</td>
+<td>English(Brazil)</td>
+</tr>
+<tr>
+<td>en-CA</td>
+<td>English(Canada)</td>
+</tr>
+<tr>
+<td>en-FR</td>
+<td>English(France)</td>
+</tr>
+<tr>
+<td>en-GB</td>
+<td>English(UK)</td>
+</tr>
+<tr>
+<td>en-HK</td>
+<td>English (Hong Kong)</td>
+</tr>
+<tr>
+<td>en-IE</td>
+<td>English(Ireland)</td>
+</tr>
+<tr>
+<td>en-IN</td>
+<td>English(India)</td>
+</tr>
+<tr>
+<td>en-KE</td>
+<td>English (Kenya)</td>
+</tr>
+<tr>
+<td>en-MY</td>
+<td>English(Malaysia)</td>
+</tr>
+<tr>
+<td>en-SA</td>
+<td></td>
+</tr>
+<tr>
+<td>en-MX</td>
+<td></td>
+</tr>
+<tr>
+<td>en-SG</td>
+<td>English(Singapore)</td>
+</tr>
+<tr>
+<td>en-US</td>
+<td>English(US)</td>
+</tr>
+<tr>
+<td>en-ZA</td>
+<td>English(South Africa)</td>
+</tr>
+<tr>
+<td>es</td>
+<td>Spanish</td>
+</tr>
+<tr>
+<td>es-MX</td>
+<td>Spanish(Mexico)</td>
+</tr>
+<tr>
+<td>fr</td>
+<td>French</td>
+</tr>
+<tr>
+<td>fr-CA</td>
+<td>French(Canada)</td>
+</tr>
+<tr>
+<td>fr-FR</td>
+<td>Fench(France)</td>
+</tr>
+<tr>
+<td>it</td>
+<td>Italian</td>
+</tr>
+<tr>
+<td>pt-BR</td>
+<td>Portuguese(Brazil)</td>
+</tr>
+<tr>
+<td>zh</td>
+<td>Chinese</td>
+</tr>
+</tbody>
+</table>
+<p>For more info on Localization process and support, see <a href="https://github.intuit.com/pages/UX-Infra/plugin-cli/#/plugin_development/LOCALIZATION">plugin-localization-support</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../web-integration-manage-connections/" class="btn btn-neutral float-left" title="Web Integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ios-integration-manage-connections/" class="btn btn-neutral float-right" title="iOS Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../web-integration-manage-connections/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ios-integration-manage-connections/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

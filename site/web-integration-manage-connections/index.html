@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/web-integration-manage-connections/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Web Integration - Intuit Data Exchange</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Web Integration";
+        var mkdocs_page_input_path = "web-integration-manage-connections.md";
+        var mkdocs_page_url = "/web-integration-manage-connections/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Intuit Data Exchange
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../capabilities/">IDX Capabilities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adding-connection/">Adding a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../managing-a-connection/">Managing a Connection</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Supported Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">IDX Integration Guides</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Integrating-status-widget-manage-connections/">Status Widget Integration</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Web Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#consuming-this-plugin">Consuming this plugin</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#a-hoc">A HOC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sandbox-api">Sandbox API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#plugin-initialization-properties">Plugin Initialization Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#onevent-callback">onEvent Callback</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#showing-a-support-link-for-errors">Showing a Support Link for Errors</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#analytics">Analytics</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../android-integration-manage-connections/">Android Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ios-integration-manage-connections/">iOS Integration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credit-karma-use-case/">Web App - Credit Karma Use Case</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../useCases/">Use Cases</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-resources/">Developer Resources</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../idx-events/">IDX Events</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Intuit Data Exchange</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Web Integration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="web-integration-for-manage-connections">Web Integration for Manage Connections</h1>
+<p>Use the following information to integrate with the "Manage Connections” widget.</p>
+<h4 id="requirements">Requirements</h4>
+<ul>
+<li>Node 10.21.0</li>
+<li>React 16.8+</li>
+<li>Plugin-CLI <a href="https://github.intuit.com/pages/UX-Infra/plugin-cli/#/INSTALLATION">installation
+</a><br>Note: Please use plugin-cli version 2.60.0 or above. IDS components now support inline css which is not backward compatible with previous versions of plugin-cli.</li>
+</ul>
+<h3 id="consuming-this-plugin">Consuming this plugin</h3>
+<ol>
+<li>Declare the plugin and version in the config.json file and in the widget descriptor’s yaml file and <code>Config.json</code> file.</li>
+</ol>
+<pre><code class="language-java">Config.json
+{
+    &quot;dependencies&quot;: {
+        &quot;widgets&quot;: [&quot;manage-connection-plugin/main@2.0.0&quot;]
+    }
+}
+</code></pre>
+<p>Yaml file</p>
+<pre><code class="language-java">dependencies:
+widgets:
+    - manage-connection-plugin/main@2.0.0
+</code></pre>
+<ol>
+<li>Consume the widget. There are two options:</li>
+<li>A HOC (higher-order component)</li>
+<li>Sandbox API</li>
+</ol>
+<h4 id="a-hoc">A HOC</h4>
+<pre><code class="language-java">import PropTypes from 'prop-types';
+import React from 'react';
+import BaseWidget from 'web-shell-core/widgets/BaseWidget';
+import Widget from 'web-shell-core/widgets/HOCWidget';
+
+class HighOrderConsumer extends BaseWidget {
+constructor(props) {
+super(props);
+}
+
+getChildContext() {
+return {
+sandbox: this.props.sandbox,
+};
+}
+
+render() {
+return (
+&lt;div className=&quot;marketing&quot;&gt;
+&lt;div style={style}&gt;
+Consumer Widget provided by the Marketing Plugin.
+&lt;br /&gt;
+Composes the Customer Widget from the Commerce Plugin
+&lt;br /&gt;
+directly in JSX as a Higher-Order Component.
+&lt;Widget
+widgetId=&quot;manage-connection-plugin/main@2.0.0&quot;
+onReady={() =&gt; this._onWidgetReady()}
+/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+);
+}
+}
+HighOrderConsumer.childContextTypes = {
+sandbox: PropTypes.shape({
+logger: PropTypes.shape({
+log: PropTypes.func,
+}),
+}),
+};
+export default HighOrderConsumer;
+</code></pre>
+<h4 id="sandbox-api">Sandbox API</h4>
+<pre><code class="language-java">componentDidMount() {
+this.props.sandbox.widgets.getWidget(&quot;manage-connection-plugin/main@2.0.0&quot;).then((Widget) =&gt; {
+/// do something with the widget
+});
+}
+</code></pre>
+<h4 id="plugin-initialization-properties">Plugin Initialization Properties</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Properties</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Req</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+<td>true</td>
+<td>BrowserAuth API key used for all API calls to the fdx application service</td>
+</tr>
+<tr>
+<td>authId</td>
+<td>string</td>
+<td>false</td>
+<td>Provided by an offering if they want to tie analytics across repositories</td>
+</tr>
+<tr>
+<td>is7216</td>
+<td>boolean</td>
+<td>true</td>
+<td>Indicates whether your product is subject to is7216 laws (and therefore restricts how data can be used)</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>string</td>
+<td>true</td>
+<td>(qal, prf, e2e , prd) points to the specified back end APIs</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>true</td>
+<td>The current country code (for use in location based search results)</td>
+</tr>
+<tr>
+<td>companyId</td>
+<td>string</td>
+<td>false</td>
+<td>ID to authenticate against realm context, if not using user context</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>true</td>
+<td>A locale to swap out all tokens for that locale's language (e.g., fr-CA)</td>
+</tr>
+<tr>
+<td>offeringId</td>
+<td>string</td>
+<td>true</td>
+<td>Offering ID that identifies you. You can also look this up for your project in the Services Portal</td>
+</tr>
+<tr>
+<td>isRealmContext</td>
+<td>boolean</td>
+<td>false</td>
+<td>If setting it true, authenticate against realm context, if not using user context</td>
+</tr>
+<tr>
+<td>sandbox</td>
+<td>object</td>
+<td>true</td>
+<td>The sandbox provides an API for widgets and plugins to interact with standard capabilities provided by an application</td>
+</tr>
+<tr>
+<td>onEvent</td>
+<td>function</td>
+<td>true</td>
+<td>Callback for empty state change. <a href="https://intuit-fdp.readme.io/docs/web-integration-guide#onevent">See onEvent states</a></td>
+</tr>
+<tr>
+<td>onError</td>
+<td>function</td>
+<td>true</td>
+<td>Callback for error</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>intuit</td>
+<td>Offering theme. Currently supports: ['intuit', 'turbotax', 'quickbooks', 'mint', 'creditkarma']</td>
+</tr>
+<tr>
+<td>tokenOverrides</td>
+<td>object</td>
+<td>false</td>
+<td>Overrides for the content displayed in the manage connections plugin. Please see src/nls/content.json for a list of content options. Note: We currently only support string overrides and none of the content that has dynamic substitutions (e.g., provider name, dates, times, etc.)</td>
+</tr>
+<tr>
+<td>features</td>
+<td>object</td>
+<td>false</td>
+<td>Configuration for offerings to opt-in or opt-out of properties. <a href="https://intuit-fdp.readme.io/docs/web-integration-guide#features">See features states</a></td>
+</tr>
+<tr>
+<td>productName</td>
+<td>string</td>
+<td>true</td>
+<td>used for showing produce name within the plugin. Eg. ['intuit', 'Mint', 'Turbotax', 'Quickbooks'] Note: Text is free floating and can be anything.</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>object</td>
+<td>false</td>
+<td>Additional headers to send with requests</td>
+</tr>
+<tr>
+<td>showAddConnection [WIP]</td>
+<td>bool</td>
+<td>false</td>
+<td>If setting it true, plugin will allow user to add connection. See <a href="https://intuit-fdp.readme.io/docs/web-integration-guide#FDP-WIDGET-PLUGIN.Important-FDP-properties">FDP Widget Plugin onboarding</a>.</td>
+</tr>
+<tr>
+<td>showZeroConnectionState</td>
+<td>bool</td>
+<td>false</td>
+<td>If setting it to true, the plugin will show the zero state experience otherwise fire onNoConnectionFound callback to the web app to handle the experience.</td>
+</tr>
+<tr>
+<td>accountTypes [WIP]</td>
+<td>array</td>
+<td>false</td>
+<td>used to filter account based on account types passed by Offering in widget. Refer <a href="https://docs.google.com/spreadsheets/u/1/d/1TBkONToBkGixRhPvoYU9QY7wmaZd6ao9r7GuNf_uPBk/edit#gid=0">doc</a>(normalized account type ) for valid account Types.</td>
+</tr>
+<tr>
+<td>handleEnableDisableToggle</td>
+<td>bool</td>
+<td>false</td>
+<td>The offering will take control of enabling/disabling the account via the onEvent callbacks onEnableAccount and onDisableAccount (see below section).</td>
+</tr>
+<tr>
+<td>handleUnlinkConnection</td>
+<td>bool</td>
+<td>false</td>
+<td>The offering will take control of unlinking the connection via the onEvent callback onUnlinkConnection (see below section).</td>
+</tr>
+<tr>
+<td>intents</td>
+<td>array</td>
+<td>false</td>
+<td>An array of strings that determines what is the intent of the offering. Eg. ['liabilities']. Note: this will eventually be required.</td>
+</tr>
+<tr>
+<td>intentFilter</td>
+<td>object</td>
+<td>false</td>
+<td>Used to filter intent based on given criteria.</td>
+</tr>
+<tr>
+<td>shouldAutoCloseWidgetTrowser</td>
+<td>boolean</td>
+<td>false</td>
+<td>Used to trigger trowser close functionality from fDP Widgets plugin.</td>
+</tr>
+<tr>
+<td>supportLinks</td>
+<td>object</td>
+<td>false</td>
+<td>Used to provide support links for different error codes. Sample format : { '111': [ { identifier: 'Learn more', link: 'https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746', actionType: 'secondary', action: 'openInBrowser', }, ], }</td>
+</tr>
+</tbody>
+</table>
+<h4 id="onevent-callback">onEvent Callback</h4>
+<p>The Manage Connection widget sends certain events to the hosting app through the onEvent callback. The following is an example:</p>
+<pre><code class="language-java">onEvent: (eventName, flowName, payload, callback) =&gt; {
+// do stuff with parameters
+    };
+};
+</code></pre>
+<p>Note: There are some events that pass a callback function, which expects two parameters in return: response and error. These are specified below.</p>
+<pre><code class="language-java">callback(data, undefined); // Invokes corresponding MC Web success experience
+callback(false, new Error('some error')); // Invokes corresponding MC Web error experience
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>eventName</strong></th>
+<th><strong>Payload</strong></th>
+<th><strong>Callback?</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onConnectionFound</td>
+<td>{ resultCount }</td>
+<td>no</td>
+<td>When the API call to fetch connections is successful.</td>
+</tr>
+<tr>
+<td>onNoConnectionFound</td>
+<td>{}</td>
+<td>no</td>
+<td>When API call to fetch connections returns an empty response and the showZeroConnectionState prop is false.</td>
+</tr>
+<tr>
+<td>lastConnectionDeleted</td>
+<td>{}</td>
+<td>no</td>
+<td>After the connection is deleted and removed from the UI.</td>
+</tr>
+<tr>
+<td>onConnectionDeleted</td>
+<td>{ accountIds, credentialSetId }</td>
+<td>no</td>
+<td>When API call to delete the connection credential is successful.</td>
+</tr>
+<tr>
+<td>onEnableAccount</td>
+<td>{ accountId, credentialSetId }</td>
+<td>yes</td>
+<td>When the account toggle is clicked to enable and handleEnableDisableToggle prop is true. Note: This gives the hosting app control over enabling the account instead of Manage Connections.</td>
+</tr>
+<tr>
+<td>onDisableAccount</td>
+<td>{ accountId, credentialSetId }</td>
+<td>yes</td>
+<td>When the account toggle is clicked to disable and handleEnableDisableToggle prop is true. Note: This gives the hosting app control over disabling the account instead of Manage Connections.</td>
+</tr>
+<tr>
+<td>afterEnableAccount</td>
+<td>{ accountId, credentialSetId }</td>
+<td>no</td>
+<td>After the account toggle is enabled and after AVM call is successfully made.</td>
+</tr>
+<tr>
+<td>afterDisableAccount</td>
+<td>{ accountId, credentialSetId }</td>
+<td>no</td>
+<td>After the account toggle is disabled and after AVM call is successfully made.</td>
+</tr>
+<tr>
+<td>onUnlinkConnection</td>
+<td>{ accountIds, credentialSetId }</td>
+<td>yes</td>
+<td>When the Unlink {provider} menu item is clicked and handleUnlinkConnection prop is true. Note: This gives the hosting app control over unlinking the connection instead of Manage Connections.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="features">Features</h3>
+<p>The Manage Connection widget has configurable experiences for managing connections and for managing user consent.
+The following are the new features available to customize the user experience.
+| <strong>Properties</strong> | <strong>Description</strong> | 
+| --- | --- |
+| showAccounts | Show the accounts associated with a specific set of credentials | 
+| showConnectionErrors [WIP] | Shows connection errors. Errors included are migration and known issues | 
+| showConsentDashboard | Shows the consent dashboard where end-users can view their active and inactive consents | 
+| showZeroConnectionState | Shows the zero state experience if true, otherwise fires the onNoConnectionFound callback to the web app to handle the experience. | 
+| showEnableDisableToggle | Shows the account switches that allow the user to enable or disable accounts. If set to true, account switches are shown and both enabled and disabled accounts are shown. If set to false, account switches are hidden and only the enabled accounts are shown. | 
+| showUnlinkConnection | Shows the Unlink {provider} menu item when clicking on the provider connection menu button. | </p>
+<p>Note: These features all default to false.</p>
+<h2 id="showing-a-support-link-for-errors">Showing a Support Link for Errors</h2>
+<p>To Show help tips and links to help articles on error messages you can use the  supportLinks initial property to pass the support links based on the error code.
+For example, the 108 error message on the web “Sign in to your bank’s website and respond to any new messages. If that does not fix the problem, here are some tips to help you More Tips” and then provide links to
+<a href="https://quickbooks.intuit.com/learn-support/en-us/sync-bank-feeds/fix-banking-error-108/00/369802">https://quickbooks.intuit.com/learn-support/en-us/sync-bank-feeds/fix-banking-error-108/00/369802</a></p>
+<p>Another example is the 111 error message on the Safari “Learn more” which links to
+<a href="https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746">https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746</a></p>
+<p>The supportLinks properties are:</p>
+<pre><code class="language-java">const supportLinks = {
+'&lt;ERROR CODE&gt;': [
+// error code for which you want to add support links
+{
+        identifier: '&lt;SUPPORT LINK NAME&gt;', // name of the support link
+        link: '&lt;SUPPORT LINK&gt;', // actual support link which you want to provide
+        actionType: '&lt;ACTION TYPE&gt;', // currently supported values : 'Secondary'. In future, this can be extended to support escape / tertiary actions
+        action: '&lt;ACTION&gt;', // currently supported values : 'openInBrowser'. In future, this can be extended to support more actions indicating how to process the link
+        },
+    ],
+};
+</code></pre>
+<p>NOTE : In order to add support links in the Manage Connections, offerings should strictly follow the previously mentioned format. Following is another example of the supporLinks object:</p>
+<pre><code class="language-java">        const supportLinks = {
+        '111': [
+        {
+        identifier: 'Learn more',
+        link:
+'https://quickbooks.intuit.com/learn-support/en-uk/banking/brexit-faq-for-united-kingdom/01/692746',
+        actionType: 'secondary',
+        action: 'openInBrowser',
+        },
+    ],
+};
+</code></pre>
+<p>Once you update this object, you can send it to the Manage Connections web widget through properties.</p>
+<h3 id="analytics">Analytics</h3>
+<p>The Manage Connection widget sends the following analytics events for</p>
+<p>trackEvent(<eventName>);</p>
+<p>The following properties are set by default for all analytic events:
+| <strong>Properties</strong> | 
+| --- |
+| sourceId | 
+| flow | 
+| timeStamp | 
+| widgetName | 
+| companyId | 
+| authId | 
+| offeringId | 
+| event_name | </p>
+<table>
+<thead>
+<tr>
+<th><strong>eventName</strong></th>
+<th><strong>Additional Properties</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onWidgetDidDisplayed</td>
+<td>[]</td>
+<td>When plugin is loaded</td>
+</tr>
+<tr>
+<td>onWidgetExit</td>
+<td>[]</td>
+<td>When plugin is closed</td>
+</tr>
+<tr>
+<td>onGetConnectionFailure</td>
+<td>[]</td>
+<td>Measured when making a call to get all providers fails</td>
+</tr>
+<tr>
+<td>onGetConnectionSuccess</td>
+<td>['status', 'route', 'intuit tid', 'fdpWidgetField1 (number of connections retrieved)']</td>
+<td>Measured when making a call to get all providers succeeds</td>
+</tr>
+<tr>
+<td>onDeleteCredentialFailure</td>
+<td>[]</td>
+<td>Measured when making a call to delete a provider fails</td>
+</tr>
+<tr>
+<td>onDeleteCredentialSuccess</td>
+<td>['status', 'route', 'intuitTid', 'credentialSetId']</td>
+<td>Measured when making a call to delete a provider succeeds</td>
+</tr>
+<tr>
+<td>onOverflowIconClick</td>
+<td>[]</td>
+<td>User clicks on the RemoveConnectionButton/overflow button</td>
+</tr>
+<tr>
+<td>onUnlinkConnectionButtonClickedEvent</td>
+<td>['providerId', 'providerName', 'credentialSetId']</td>
+<td>User clicks the Unlink {provider} menu item</td>
+</tr>
+<tr>
+<td>onArchiveFailure</td>
+<td>[]</td>
+<td>Measured when making a call to get archived consents fails</td>
+</tr>
+<tr>
+<td>onArchiveSuccess</td>
+<td>['status', 'route', 'intuit tid', 'fdpWidgetField1 (number of connections retrieved)']</td>
+<td>Measured when making a call to get archived consents succeeds</td>
+</tr>
+<tr>
+<td>onButtonLinkClick</td>
+<td>[]</td>
+<td>User clicks any button link</td>
+</tr>
+<tr>
+<td>onConsentFailure</td>
+<td>[]</td>
+<td>Measured when making a call to get consent data fails</td>
+</tr>
+<tr>
+<td>onConsentSuccess</td>
+<td>['status', 'route', 'intuitTid', 'fdpWidgetField13']</td>
+<td>Measured when making a call to get consent data succeeds</td>
+</tr>
+<tr>
+<td>onEnableAccountToggleEvent</td>
+<td>['accountId', 'providerId', 'providerName']</td>
+<td>User clicks the account toggle button to enable an account</td>
+</tr>
+<tr>
+<td>onDisableAccountToggleEvent</td>
+<td>['accountId', 'providerId', 'providerName']</td>
+<td>User clicks the account toggle button to disable an account</td>
+</tr>
+<tr>
+<td>onErrorClickEvent</td>
+<td>['providerId', 'providerName', 'credentialSetId', 'errorCode', 'errorType', 'authenticationType']</td>
+<td>User clicks on an error CTA button link</td>
+</tr>
+<tr>
+<td>onCancelButtonClicked</td>
+<td>[]</td>
+<td>User clicks on cancel button</td>
+</tr>
+<tr>
+<td>onBankConnectionsZeroStateEvent</td>
+<td>['resultCount']</td>
+<td>Measured when Aggregated/search API returns zero bank connections</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Integrating-status-widget-manage-connections/" class="btn btn-neutral float-left" title="Status Widget Integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../android-integration-manage-connections/" class="btn btn-neutral float-right" title="Android Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Integrating-status-widget-manage-connections/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../android-integration-manage-connections/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
